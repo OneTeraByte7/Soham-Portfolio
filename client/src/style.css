@@ -8,94 +8,244 @@
   }
 
   body {
-    @apply bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300;
+    @apply transition-colors duration-300;
   }
 }
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20;
   }
 
+  /* Futuristic Buttons */
   .btn-primary {
-    @apply relative bg-gradient-to-r from-primary to-accent text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 overflow-hidden;
+    @apply relative px-8 py-4 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, #00a0ff 0%, #7000ff 100%);
   }
 
-  .btn-primary::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 transition-opacity duration-300;
-  }
-
-  .btn-primary:hover::before {
-    @apply opacity-100;
-  }
-
-  .btn-primary span {
-    @apply relative z-10;
+  .btn-primary:hover {
+    @apply scale-105 shadow-neon-blue;
+    filter: brightness(1.1);
   }
 
   .btn-secondary {
-    @apply relative bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border-2 border-primary/30 dark:border-primary-dark/50 text-gray-900 dark:text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 hover:bg-primary/10 dark:hover:bg-primary-dark/20 hover:border-primary dark:hover:border-primary-dark hover:scale-105;
+    @apply relative px-8 py-4 rounded-xl font-semibold backdrop-blur-xl transition-all duration-300;
+    @apply bg-white/70 dark:bg-dark-elevated/70 border-2 border-cyber-blue-500;
+    @apply text-cyber-blue-600 dark:text-cyber-blue-400;
   }
 
+  .btn-secondary:hover {
+    @apply scale-105 shadow-cyber;
+    @apply bg-cyber-blue-500 text-white border-cyber-blue-600;
+  }
+
+  /* Glass Cards - No Tilt Animation */
   .card {
-    @apply relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-2xl shadow-xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 overflow-hidden;
+    @apply relative backdrop-blur-xl rounded-2xl p-8 transition-all duration-500;
+    @apply bg-white/70 dark:bg-dark-elevated/70;
+    @apply border border-light-border dark:border-dark-border;
   }
 
-  .card::before {
-    content: '';
-    @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-neon-purple transform scale-x-0 transition-transform duration-500 origin-left;
+  .card:hover {
+    @apply scale-105 shadow-cyber-lg;
   }
 
-  .card:hover::before {
-    @apply scale-x-100;
-  }
-
+  /* Glass Morphism Card */
   .glass-card {
-    @apply relative bg-white/10 dark:bg-gray-900/30 backdrop-blur-xl rounded-2xl shadow-2xl p-8 border border-white/20 dark:border-gray-700/30 hover:bg-white/20 dark:hover:bg-gray-900/40 transition-all duration-500;
+    @apply relative backdrop-blur-2xl rounded-2xl p-8;
+    @apply bg-white/60 dark:bg-dark-elevated/60;
+    @apply border border-white/20 dark:border-white/10;
+    @apply shadow-cyber;
   }
 
+  /* Skill Badge */
   .skill-badge {
-    @apply relative bg-gradient-to-r from-blue-500/20 to-cyan-500/20 dark:from-blue-500/30 dark:to-cyan-500/30 backdrop-blur-sm text-primary dark:text-primary-dark border border-primary/30 dark:border-primary-dark/40 px-4 py-2 rounded-full text-sm font-medium hover:scale-110 hover:shadow-lg transition-all duration-300 cursor-default;
+    @apply relative px-4 py-2 rounded-xl text-sm font-medium;
+    @apply bg-gradient-to-r from-light-surface to-light-bg dark:from-dark-surface dark:to-dark-bg;
+    @apply border border-cyber-blue-200 dark:border-cyber-blue-800;
+    @apply text-gray-800 dark:text-gray-200;
+    @apply transition-all duration-300 hover:scale-105;
   }
 
-  .neon-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-neon-purple animate-gradient;
+  .skill-badge:hover {
+    @apply border-cyber-blue-500 shadow-neon-blue;
   }
 
-  .theme-toggle {
-    @apply relative w-14 h-7 bg-gray-300 dark:bg-gray-700 rounded-full p-1 cursor-pointer transition-colors duration-300;
-  }
-
-  .theme-toggle-slider {
-    @apply absolute top-1 left-1 w-5 h-5 bg-white dark:bg-gray-900 rounded-full shadow-md transform transition-transform duration-300 dark:translate-x-7;
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-cyber bg-clip-text text-transparent;
   }
 }
 
 @layer utilities {
-  .text-glow {
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5),
-                 0 0 20px rgba(59, 130, 246, 0.3),
-                 0 0 30px rgba(59, 130, 246, 0.2);
+  /* Line Clamp */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .dark .text-glow {
-    text-shadow: 0 0 10px rgba(96, 165, 250, 0.7),
-                 0 0 20px rgba(96, 165, 250, 0.5),
-                 0 0 30px rgba(96, 165, 250, 0.3);
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .glow-border {
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3),
-                0 0 30px rgba(59, 130, 246, 0.2);
+  /* Animation Delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
   }
 
-  .dark .glow-border {
-    box-shadow: 0 0 15px rgba(96, 165, 250, 0.4),
-                0 0 30px rgba(96, 165, 250, 0.3);
+  .animation-delay-400 {
+    animation-delay: 400ms;
   }
 
-  .gradient-border {
-    border-image: linear-gradient(to right, #3b82f6, #06b6d4, #a855f7) 1;
+  .animation-delay-600 {
+    animation-delay: 600ms;
   }
+
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2000ms;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4000ms;
+  }
+
+  /* Hover Scale (subtle) */
+  .hover-scale-102:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Custom Animations */
+@keyframes smoothFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Apply Animations */
+.animate-fade-in {
+  animation: smoothFadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: smoothSlideUp 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+/* Futuristic Glow Effects */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(0, 160, 255, 0.4),
+              0 0 40px rgba(0, 160, 255, 0.2);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(0, 255, 117, 0.4),
+              0 0 40px rgba(0, 255, 117, 0.2);
+}
+
+.glow-orange {
+  box-shadow: 0 0 20px rgba(255, 111, 0, 0.4),
+              0 0 40px rgba(255, 111, 0, 0.2);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(112, 0, 255, 0.4),
+              0 0 40px rgba(112, 0, 255, 0.2);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00a0ff, #7000ff);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #00a0ff, #ff6f00);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00a0ff, #00ff75);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 160, 255, 0.3);
+  color: inherit;
+}
+
+.dark ::selection {
+  background: rgba(0, 255, 117, 0.3);
+  color: inherit;
+}
+
+/* Smooth Transitions for Theme */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Remove transition from animations */
+.animate-fade-in,
+.animate-slide-in,
+.animate-slide-up,
+.animate-float,
+.animate-glow-pulse,
+.animate-gradient-x,
+.animate-gradient-y {
+  transition: none !important;
 }
