@@ -2,16 +2,20 @@ import type { Project } from '../types';
 import { Router } from '../utils/router';
 
 export class ProjectDetailPage {
-  private container: HTMLElement | null;
+  private containerId: string;
   private router: Router;
 
   constructor(containerId: string) {
-    this.container = document.getElementById(containerId);
+    this.containerId = containerId;
     this.router = Router.getInstance();
   }
 
   render(project: Project): void {
-    if (!this.container) return;
+    const container = document.getElementById(this.containerId);
+    if (!container) {
+      console.error(`Project detail container #${this.containerId} not found`);
+      return;
+    }
 
     const html = `
       <div class="fixed inset-0 z-50 overflow-y-auto bg-light-bg dark:bg-dark-bg animate-fade-in">
@@ -181,7 +185,7 @@ export class ProjectDetailPage {
       </div>
     `;
 
-    this.container.innerHTML = html;
+    container.innerHTML = html;
     this.attachEventListeners();
   }
 
@@ -202,8 +206,9 @@ export class ProjectDetailPage {
   }
 
   hide(): void {
-    if (this.container) {
-      this.container.innerHTML = '';
+    const container = document.getElementById(this.containerId);
+    if (container) {
+      container.innerHTML = '';
     }
   }
 }
