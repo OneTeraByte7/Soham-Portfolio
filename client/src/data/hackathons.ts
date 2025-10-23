@@ -2,36 +2,25 @@ import type { Hackathon } from '../types';
 
 export const hackathons: Hackathon[] = [
   {
-    id: 'techathon-2025',
-    name: 'Techathon 2025',
-    position: 'Winner',
-    date: '2025',
-    description: 'Built a comprehensive healthcare monitoring system for rural areas',
-    project: 'HealthCare Monitoring System',
-    achievement: '1st Place',
-    icon: '/images/hackathons/techathon.png',
+    id: 'ieee-codeclash-2025',
+    name: 'IEEE CodeClash International Hackathon',
+    position: '3rd Place Winner',
+    date: 'March 2025',
+    description: 'Developed machine learning models for real-time collision detection in foggy weather. Achieved 85%+ accuracy using a dataset of over 500,000 data points. Secured 3rd place among 800 global teams and earned a $200 cash prize for innovation in road safety technology.',
+    project: 'Machine Learning and Artificial Intelligence',
+    achievement: '3rd Place among 800 teams',
+    icon: '/images/hackathons/ieee.png',
     color: 'cyber-blue'
   },
   {
-    id: 'amd-hackathon-2025',
-    name: 'AMD MI300 GPU Hackathon',
-    position: 'Participant',
-    date: '2025',
-    description: 'Developed AI scheduling assistant using LLMs deployed on AMD MI300 GPUs',
-    project: 'AI Scheduling Assistant',
-    achievement: 'Finalist',
-    icon: '/images/hackathons/amd.png',
+    id: 'nst-blinkit-teckron-2025',
+    name: 'NST & Blinkit Hackathon Teckron',
+    position: 'Top 16 Finalist',
+    date: 'March 2025',
+    description: 'Developed a waste management automation web app for dark stores. Utilized Machine Learning & AI to optimize waste segregation, enhancing efficiency by 60%. Built a scalable website infrastructure that processed 10,000+ data points for real-time waste categorization.',
+    project: 'Smart Automation and Technology',
+    achievement: 'Top 16 among 150+ teams',
+    icon: '/images/hackathons/blinkit.png',
     color: 'cyber-green'
-  },
-  {
-    id: 'ai-football-hackathon',
-    name: 'AI for Football Challenge',
-    position: 'Winner',
-    date: '2024',
-    description: 'Created autonomous multi-agent reinforcement learning simulator',
-    project: 'Multi-Agent RL Simulator',
-    achievement: '1st Place',
-    icon: '/images/hackathons/ai-football.png',
-    color: 'cyber-purple'
   }
 ];

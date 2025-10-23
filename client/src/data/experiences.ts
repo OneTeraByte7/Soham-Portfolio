@@ -2,66 +2,45 @@ import type { Experience } from '../types';
 
 export const experiences: Experience[] = [
   {
-    id: 'ai-research-intern',
-    role: 'AI/ML Research Intern',
-    company: 'Tech Innovation Labs',
-    location: 'Remote',
-    duration: 'Jun 2024 - Present',
+    id: 'deep-learning-titans',
+    role: 'AI Engineer | Research Intern',
+    company: 'Deep Learning Titans',
+    location: 'Pune, India',
+    duration: 'August 2025 - Ongoing',
     responsibilities: [
-      'Developed and deployed machine learning models for predictive analytics',
-      'Implemented reinforcement learning algorithms for autonomous systems',
-      'Collaborated with cross-functional teams on AI integration projects',
-      'Optimized model performance reducing inference time by 40%',
-      'Conducted research on Large Language Models and their applications'
+      'Improved model inference speed by 30% using state-of-the-art deep learning models',
+      'Maintained 95% model accuracy while optimizing performance',
+      'Automated data processing with AI workflows, reducing manual effort by 60%',
+      'Guided strategy for 5+ AI projects by benchmarking model performance',
+      'Boosted operational efficiency by 25% through ML model integration'
     ],
     type: 'internship',
-    skills: ['Python', 'PyTorch', 'TensorFlow', 'LLMs', 'MLOps'],
+    skills: ['Python', 'PyTorch', 'TensorFlow', 'Deep Learning', 'Model Optimization', 'AI Research', 'Data Processing'],
     achievements: [
-      'Published research paper on multi-agent RL systems',
-      'Improved model accuracy by 25%',
-      'Deployed 5+ production ML models'
+      'Improved inference speed by 30%',
+      'Maintained 95% model accuracy',
+      'Reduced manual effort by 60%'
     ]
   },
   {
-    id: 'fullstack-developer',
-    role: 'Full-Stack Developer',
-    company: 'StartupXYZ',
-    location: 'Hybrid',
-    duration: 'Jan 2024 - May 2024',
+    id: 'hackncrafts',
+    role: 'Full Stack Developer Intern',
+    company: 'hackNcrafts',
+    location: 'Pune, India',
+    duration: 'June 2025 - July 2025',
     responsibilities: [
-      'Built responsive web applications using React and TypeScript',
-      'Designed and implemented RESTful APIs with Node.js and Express',
-      'Integrated MongoDB for data persistence and management',
-      'Implemented authentication and authorization systems',
-      'Conducted code reviews and mentored junior developers'
+      'Delivered 3 full-stack websites for diverse clients using the MERN stack',
+      'Led backend development for the Meetocure healthcare application',
+      'Built a scalable RESTful API to handle over 10,000 patient data entries',
+      'Increased user engagement by 40% with real-time WebSocket features',
+      'Improved application performance by 50% by optimizing database queries'
     ],
     type: 'internship',
-    skills: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Docker'],
+    skills: ['React', 'Node.js', 'MongoDB', 'Express.js', 'MERN Stack', 'RESTful API', 'WebSocket', 'Database Optimization'],
     achievements: [
-      'Reduced page load time by 50%',
-      'Built 10+ reusable components',
-      'Managed team of 3 developers'
-    ]
-  },
-  {
-    id: 'data-analyst-intern',
-    role: 'Data Analyst Intern',
-    company: 'DataCorp Solutions',
-    location: 'On-site',
-    duration: 'Aug 2023 - Dec 2023',
-    responsibilities: [
-      'Analyzed large datasets using Python and SQL',
-      'Created interactive dashboards with Tableau and Power BI',
-      'Automated data processing pipelines',
-      'Generated insights for business decision-making',
-      'Collaborated with stakeholders to define KPIs'
-    ],
-    type: 'internship',
-    skills: ['Python', 'SQL', 'Tableau', 'Power BI', 'Pandas'],
-    achievements: [
-      'Processed 1M+ data records',
-      'Created 15+ interactive dashboards',
-      'Saved 20 hours/week through automation'
+      'Delivered 3 full-stack websites',
+      'Increased user engagement by 40%',
+      'Improved performance by 50%'
     ]
   }
 ];
