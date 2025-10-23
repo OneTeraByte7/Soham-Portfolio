@@ -239,6 +239,34 @@
   transition-duration: 300ms;
 }
 
+/* Text Reveal Animation */
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-text-reveal {
+  animation: textReveal 1s ease-out forwards;
+  opacity: 0;
+}
+
+/* Additional animation delays */
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-900 {
+  animation-delay: 900ms;
+}
+
 /* Remove transition from animations */
 .animate-fade-in,
 .animate-slide-in,
@@ -246,6 +274,62 @@
 .animate-float,
 .animate-glow-pulse,
 .animate-gradient-x,
-.animate-gradient-y {
+.animate-gradient-y,
+.animate-text-reveal {
   transition: none !important;
+}
+
+/* Mobile Responsiveness Improvements */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing on mobile */
+  .section-container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Readable text sizes */
+  h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+
+  /* Ensure cards stack properly */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Profile image sizing */
+  .w-56.h-56 {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  /* Reduce blur on mobile for better performance */
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  /* Better contrast in dark mode */
+  .bg-white\/20 {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .bg-white\/30 {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 }
