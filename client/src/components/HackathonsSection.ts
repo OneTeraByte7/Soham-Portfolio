@@ -84,6 +84,7 @@ export class HackathonsSection {
             <span class="font-semibold">Project:</span> ${hackathon.project}
           </p>
         </div>
+        </div>
       </div>
     `;
   }
