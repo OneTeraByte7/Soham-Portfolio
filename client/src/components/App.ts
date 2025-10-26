@@ -162,94 +162,155 @@ export class App {
           </div>
         </nav>
 
-        <!-- Hero Section - Glassmorphism Landing Page -->
-        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-          <!-- Animated Gradient Background -->
-          <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 dark:from-blue-600 dark:via-purple-700 dark:to-pink-600"></div>
+        <!-- Hero Section - Modern Dark Design -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-gradient-to-br from-gray-950 via-blue-950 to-purple-950 dark:from-black dark:via-blue-950 dark:to-purple-950">
 
-          <!-- Animated Orbs -->
-          <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-400 dark:bg-cyan-500 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-70 animate-float"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-400 dark:bg-pink-500 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-70 animate-float animation-delay-2000"></div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-400 dark:bg-purple-500 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-70 animate-float animation-delay-4000"></div>
+          <!-- Animated Gradient Mesh Background -->
+          <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 animate-gradient-x"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-float"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-violet-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-float animation-delay-2000"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-fuchsia-500 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-float animation-delay-4000"></div>
           </div>
 
-          <!-- Glassmorphism Card -->
-          <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="backdrop-blur-2xl bg-white/20 dark:bg-black/20 rounded-3xl p-12 md:p-16 border border-white/30 dark:border-white/10 shadow-2xl animate-fade-in">
+          <!-- Grid Pattern Overlay -->
+          <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
 
-              <!-- Profile Image with Glassmorphism -->
-              <div class="mb-10 animate-fade-in animation-delay-200">
-                <div class="relative inline-block">
-                  <!-- Glow Ring -->
-                  <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 blur-2xl opacity-75 animate-float"></div>
+          <!-- Content Container -->
+          <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-                  <!-- Glass Circle Container -->
-                  <div class="relative w-56 h-56 mx-auto rounded-full backdrop-blur-xl bg-white/30 dark:bg-white/10 border-4 border-white/50 dark:border-white/20 shadow-2xl overflow-hidden">
-                    <img
-                      src="/images/profile/profile.jpg"
-                      alt="Soham J Suryawanshi"
-                      class="w-full h-full object-cover object-center scale-110"
-                      style="object-position: center 35%;"
-                      onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27%23ffffff%27%3E%3Cpath d=%27M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%27/%3E%3C/svg%3E'"
-                    />
+              <!-- Left Side - Profile Image -->
+              <div class="flex justify-center lg:justify-end order-2 lg:order-1">
+                <div class="relative group">
+                  <!-- Outer Glow Rings -->
+                  <div class="absolute -inset-8 bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 rounded-full opacity-0 group-hover:opacity-75 blur-2xl transition-all duration-1000 animate-pulse"></div>
+                  <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full opacity-30 blur-xl animate-spin-slow"></div>
+
+                  <!-- Image Container -->
+                  <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <!-- Rotating Border -->
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 p-1 animate-spin-slow">
+                      <div class="w-full h-full rounded-full bg-gray-950 dark:bg-black"></div>
+                    </div>
+
+                    <!-- Profile Image -->
+                    <div class="absolute inset-2 rounded-full overflow-hidden border-4 border-gray-900 dark:border-black shadow-2xl">
+                      <img
+                        src="/images/profile/profile.jpg"
+                        alt="Soham J Suryawanshi"
+                        class="w-full h-full object-cover object-center scale-110 group-hover:scale-125 transition-transform duration-700"
+                        style="object-position: center 35%;"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27%23a855f7%27%3E%3Cpath d=%27M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%27/%3E%3C/svg%3E'"
+                      />
+                      <!-- Overlay Gradient -->
+                      <div class="absolute inset-0 bg-gradient-to-t from-purple-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+
+                    <!-- Floating Tech Icons -->
+                    <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl animate-bounce-glow group-hover:scale-110 transition-transform duration-300">
+                      <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </div>
+                    <div class="absolute -bottom-2 -left-6 w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-2xl animate-float animation-delay-2000 group-hover:scale-110 transition-transform duration-300">
+                      <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.627-5.373-12-12-12"/></svg>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Text Content -->
-              <div class="text-center space-y-6">
-                <!-- Main Name -->
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight animate-text-reveal animation-delay-300">
-                  <span class="text-white drop-shadow-2xl">
-                    Soham J Suryawanshi
-                  </span>
-                </h1>
+              <!-- Right Side - Text Content -->
+              <div class="space-y-8 order-1 lg:order-2 text-center lg:text-left">
 
-                <!-- Developer Name -->
-                <p class="text-3xl md:text-4xl font-bold animate-text-reveal animation-delay-400">
-                  <span class="text-white/90 drop-shadow-lg">
-                    OneTeraByte13
+                <!-- Greeting -->
+                <div class="animate-slide-up" style="opacity: 0;">
+                  <span class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-violet-500/20 border border-cyan-500/30 text-cyan-400 text-sm font-bold uppercase tracking-wider backdrop-blur-xl">
+                    👋 Welcome to my portfolio
                   </span>
-                </p>
+                </div>
 
-                <!-- Tagline -->
-                <p class="text-xl md:text-2xl font-light animate-text-reveal animation-delay-600">
-                  <span class="text-white/80 drop-shadow-md">
-                    Engineering the Software and Empowering with AI
-                  </span>
-                </p>
+                <!-- Main Heading -->
+                <div class="space-y-4">
+                  <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-tight animate-clip-reveal" style="opacity: 0;">
+                    <span class="block text-white">Soham J</span>
+                    <span class="block bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Suryawanshi</span>
+                  </h1>
 
-                <!-- Description -->
-                <p class="text-base md:text-lg text-white/70 max-w-2xl mx-auto mt-6 animate-fade-in animation-delay-800 leading-relaxed">
-                  Specializing in Deep Learning, Reinforcement Learning, and Large Language Models.
-                  Building intelligent systems with PyTorch, TensorFlow, and state-of-the-art AI architectures.
-                </p>
+                  <p class="text-2xl md:text-3xl font-bold text-gray-400 animate-slide-up animation-delay-200" style="opacity: 0;">
+                    <span class="text-violet-400">@</span>OneTeraByte13
+                  </p>
+                </div>
+
+                <!-- Role & Tagline -->
+                <div class="space-y-4 animate-slide-up animation-delay-400" style="opacity: 0;">
+                  <p class="text-xl md:text-2xl font-semibold text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">
+                    AI/ML Engineer & Full-Stack Developer
+                  </p>
+                  <p class="text-lg text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    Specializing in <span class="text-cyan-400 font-semibold">Deep Learning</span>, <span class="text-violet-400 font-semibold">Reinforcement Learning</span>, and <span class="text-fuchsia-400 font-semibold">LLMs</span>. Building intelligent systems with cutting-edge AI architectures.
+                  </p>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-4 py-6 animate-slide-up animation-delay-600" style="opacity: 0;">
+                  <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">1250+</div>
+                    <div class="text-sm text-gray-500 mt-1">Problems Solved</div>
+                  </div>
+                  <div class="text-center border-x border-gray-800">
+                    <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">15+</div>
+                    <div class="text-sm text-gray-500 mt-1">Projects</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-fuchsia-400 to-pink-500 bg-clip-text text-transparent">3+</div>
+                    <div class="text-sm text-gray-500 mt-1">Years Exp</div>
+                  </div>
+                </div>
 
                 <!-- CTA Buttons -->
-                <div class="flex flex-wrap items-center justify-center gap-4 mt-8 animate-slide-up animation-delay-900">
-                  <a href="#projects" class="px-8 py-4 rounded-xl backdrop-blur-xl bg-white/30 dark:bg-white/20 border-2 border-white/50 text-white font-semibold hover:scale-105 hover:bg-white/40 transition-all duration-300 shadow-lg">
-                    View Projects
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start animate-slide-up animation-delay-800" style="opacity: 0;">
+                  <a href="#projects" class="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-600 rounded-xl font-bold text-white shadow-2xl hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-300 relative overflow-hidden">
+                    <span class="relative z-10 flex items-center gap-2">
+                      View Projects
+                      <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                      </svg>
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </a>
-                  <a href="#contact" class="px-8 py-4 rounded-xl backdrop-blur-xl bg-white/20 dark:bg-white/10 border-2 border-white/40 text-white font-semibold hover:scale-105 hover:bg-white/30 transition-all duration-300 shadow-lg">
+
+                  <a href="#contact" class="px-8 py-4 bg-gray-900 border-2 border-violet-500/50 rounded-xl font-bold text-white hover:bg-violet-500/10 hover:border-violet-400 hover:scale-105 transition-all duration-300 shadow-xl">
                     Get in Touch
                   </a>
                 </div>
 
                 <!-- Social Links -->
-                <div class="flex items-center justify-center gap-4 mt-10 animate-fade-in animation-delay-1000">
-                  <a href="https://github.com/OneTeraByte7" target="_blank" class="p-4 rounded-xl backdrop-blur-xl bg-white/20 dark:bg-white/10 border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-110">
-                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <div class="flex gap-4 justify-center lg:justify-start animate-slide-up animation-delay-900" style="opacity: 0;">
+                  <a href="https://github.com/OneTeraByte7" target="_blank" class="group w-12 h-12 bg-gray-900 border border-gray-800 rounded-xl flex items-center justify-center hover:bg-gradient-to-br hover:from-cyan-500 hover:to-blue-600 hover:border-transparent transition-all duration-300 hover:scale-110 hover:rotate-6">
+                    <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                   </a>
-                  <a href="https://linkedin.com/in/soham-suryawanshi" target="_blank" class="p-4 rounded-xl backdrop-blur-xl bg-white/20 dark:bg-white/10 border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-110">
-                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  <a href="https://linkedin.com/in/soham-suryawanshi" target="_blank" class="group w-12 h-12 bg-gray-900 border border-gray-800 rounded-xl flex items-center justify-center hover:bg-gradient-to-br hover:from-violet-500 hover:to-purple-600 hover:border-transparent transition-all duration-300 hover:scale-110 hover:rotate-6">
+                    <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                   </a>
-                  <a href="mailto:soham@example.com" class="p-4 rounded-xl backdrop-blur-xl bg-white/20 dark:bg-white/10 border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-110">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <a href="mailto:soham@example.com" class="group w-12 h-12 bg-gray-900 border border-gray-800 rounded-xl flex items-center justify-center hover:bg-gradient-to-br hover:from-fuchsia-500 hover:to-pink-600 hover:border-transparent transition-all duration-300 hover:scale-110 hover:rotate-6">
+                    <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  </a>
+                  <a href="https://twitter.com" target="_blank" class="group w-12 h-12 bg-gray-900 border border-gray-800 rounded-xl flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-500 hover:to-cyan-600 hover:border-transparent transition-all duration-300 hover:scale-110 hover:rotate-6">
+                    <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                   </a>
                 </div>
               </div>
+
             </div>
+          </div>
+
+          <!-- Scroll Indicator -->
+          <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <a href="#about" class="flex flex-col items-center gap-2 text-gray-500 hover:text-violet-400 transition-colors">
+              <span class="text-sm font-medium">Scroll Down</span>
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+              </svg>
+            </a>
           </div>
         </section>
 
@@ -380,7 +441,7 @@ export class App {
               </p>
             </div>
 
-            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            <div id="projects-grid" class="bento-grid"></div>
           </div>
         </section>
 

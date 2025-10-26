@@ -333,3 +333,481 @@
     background-color: rgba(0, 0, 0, 0.4);
   }
 }
+
+/* ========================================
+   ADVANCED ANIMATIONS & EFFECTS
+   ======================================== */
+
+/* Clip-path Reveal Animation */
+@keyframes clipReveal {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes clipRevealDiagonal {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.animate-clip-reveal {
+  animation: clipReveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.animate-clip-reveal-diagonal {
+  animation: clipRevealDiagonal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Morphing Blob Effect */
+@keyframes morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+  }
+  75% {
+    border-radius: 60% 30% 60% 50% / 60% 40% 30% 70%;
+  }
+}
+
+.animate-morph {
+  animation: morph 8s ease-in-out infinite;
+}
+
+/* Liquid Reveal */
+@keyframes liquidReveal {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
+    opacity: 1;
+  }
+}
+
+.animate-liquid-reveal {
+  animation: liquidReveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Stagger Fade In Up */
+@keyframes staggerFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-stagger {
+  animation: staggerFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-delay-1 { animation-delay: 0.1s; }
+.stagger-delay-2 { animation-delay: 0.2s; }
+.stagger-delay-3 { animation-delay: 0.3s; }
+.stagger-delay-4 { animation-delay: 0.4s; }
+.stagger-delay-5 { animation-delay: 0.5s; }
+.stagger-delay-6 { animation-delay: 0.6s; }
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Floating Particle Effect */
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(10px, -20px) rotate(90deg);
+  }
+  50% {
+    transform: translate(-10px, -40px) rotate(180deg);
+  }
+  75% {
+    transform: translate(20px, -20px) rotate(270deg);
+  }
+}
+
+.animate-particle {
+  animation: particleFloat 20s ease-in-out infinite;
+}
+
+/* Magnetic Glow Pulse */
+@keyframes magneticGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 160, 255, 0.3),
+                0 0 40px rgba(0, 160, 255, 0.1),
+                inset 0 0 20px rgba(0, 160, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 160, 255, 0.6),
+                0 0 80px rgba(0, 160, 255, 0.3),
+                inset 0 0 40px rgba(0, 160, 255, 0.2);
+  }
+}
+
+.animate-magnetic-glow {
+  animation: magneticGlow 3s ease-in-out infinite;
+}
+
+/* Elastic Scale */
+@keyframes elasticScale {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-elastic-scale {
+  animation: elasticScale 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Typing Effect for Text */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinkCaret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.typing-effect {
+  overflow: hidden;
+  border-right: 3px solid;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blinkCaret 0.75s step-end infinite;
+}
+
+/* Rotate 3D */
+@keyframes rotate3D {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
+
+.animate-rotate-3d {
+  animation: rotate3D 20s linear infinite;
+  transform-style: preserve-3d;
+}
+
+/* Bounce with Glow */
+@keyframes bounceGlow {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 5px 20px rgba(0, 160, 255, 0.3);
+  }
+  50% {
+    transform: translateY(-20px);
+    box-shadow: 0 25px 40px rgba(0, 160, 255, 0.6);
+  }
+}
+
+.animate-bounce-glow {
+  animation: bounceGlow 2s ease-in-out infinite;
+}
+
+/* Perspective Shift */
+@keyframes perspectiveShift {
+  0%, 100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(-5deg) rotateY(5deg);
+  }
+  75% {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+  }
+}
+
+.animate-perspective {
+  animation: perspectiveShift 10s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.animate-glitch {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+/* Neon Pulse */
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px #00a0ff, 0 0 20px #00a0ff, 0 0 30px #00a0ff;
+  }
+  50% {
+    text-shadow: 0 0 20px #00a0ff, 0 0 40px #00a0ff, 0 0 60px #00a0ff;
+  }
+}
+
+.animate-neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+/* ========================================
+   BENTO GRID LAYOUT
+   ======================================== */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  grid-auto-flow: dense;
+}
+
+.bento-item-tall {
+  grid-row: span 2;
+}
+
+.bento-item-wide {
+  grid-column: span 2;
+}
+
+.bento-item-large {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .bento-item-wide,
+  .bento-item-large {
+    grid-column: span 1;
+  }
+
+  .bento-item-tall,
+  .bento-item-large {
+    grid-row: span 1;
+  }
+}
+
+/* ========================================
+   INTERACTIVE TIMELINE
+   ======================================== */
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,
+    rgba(0, 160, 255, 0) 0%,
+    rgba(0, 160, 255, 0.5) 50%,
+    rgba(0, 160, 255, 0) 100%
+  );
+  transform: translateX(-50%);
+}
+
+.timeline-node {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a0ff, #7000ff);
+  box-shadow: 0 0 20px rgba(0, 160, 255, 0.6);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-node:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 40px rgba(0, 160, 255, 1);
+}
+
+.timeline-node::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: rgba(0, 160, 255, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-node:hover::before {
+  opacity: 1;
+  animation: ripple 1.5s ease-out infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   HOVER EFFECTS & MICRO-INTERACTIONS
+   ======================================== */
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
+
+.hover-glow {
+  transition: filter 0.3s ease;
+}
+
+.hover-glow:hover {
+  filter: drop-shadow(0 0 20px rgba(0, 160, 255, 0.6));
+}
+
+.hover-rotate {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+/* Magnetic Button Effect */
+.btn-magnetic {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-magnetic::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-magnetic:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Parallax Layers */
+.parallax-slow {
+  transform: translateZ(-50px) scale(1.5);
+}
+
+.parallax-medium {
+  transform: translateZ(-25px) scale(1.25);
+}
+
+.parallax-fast {
+  transform: translateZ(0);
+}
+
+/* Slow Spin Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Gradient Animation */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+
+/* Grid Pattern Background */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
