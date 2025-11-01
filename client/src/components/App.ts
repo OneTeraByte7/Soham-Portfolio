@@ -143,8 +143,8 @@ export class App {
                 <a href="#hero" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm">Home</a>
                 <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium text-sm">About</a>
                 <a href="#experience" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium text-sm">Experience</a>
-                <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors font-medium text-sm">Skills</a>
                 <a href="#hackathons" class="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-medium text-sm">Hackathons</a>
+                <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors font-medium text-sm">Skills</a>
                 <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm">Projects</a>
                 <a href="#achievements" class="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors font-medium text-sm">Coding</a>
                 <a href="#certifications" class="text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-colors font-medium text-sm">Certifications</a>
@@ -361,6 +361,9 @@ export class App {
         <!-- Experience Section Container -->
         <div id="experience"></div>
 
+        <!-- Hackathons Section Container -->
+        <div id="hackathons"></div>
+
         <!-- Skills Section -->
         <section id="skills" class="relative py-32 overflow-hidden backdrop-blur-xl bg-gradient-to-br from-purple-50/80 via-blue-50/80 to-cyan-50/80 dark:from-gray-900/90 dark:via-blue-900/30 dark:to-cyan-900/30">
           <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -423,9 +426,6 @@ export class App {
             </div>
           </div>
         </section>
-
-        <!-- Hackathons Section Container -->
-        <div id="hackathons"></div>
 
         <!-- Projects Section -->
         <section id="projects" class="relative py-32 overflow-hidden backdrop-blur-xl bg-gradient-to-br from-cyan-50/80 via-blue-50/80 to-indigo-50/80 dark:from-gray-900/90 dark:via-indigo-900/30 dark:to-cyan-900/30">

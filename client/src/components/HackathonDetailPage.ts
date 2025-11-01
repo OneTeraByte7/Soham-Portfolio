@@ -99,18 +99,27 @@ export class HackathonDetailPage {
               </p>
             </div>
 
-            <!-- Icon Display -->
+            <!-- Certificate Display -->
             <div class="mb-12 animate-scale-in">
-              <div class="backdrop-blur-xl bg-white/70 dark:bg-dark-elevated/70 rounded-3xl p-12 border border-light-border dark:border-dark-border flex items-center justify-center">
-                <div class="relative w-48 h-48 rounded-2xl bg-gradient-to-br ${colors.gradient} p-1 shadow-cyber-lg">
-                  <div class="w-full h-full rounded-2xl bg-white dark:bg-dark-elevated flex items-center justify-center overflow-hidden p-8">
-                    <img
-                      src="${hackathon.icon}"
-                      alt="${hackathon.name}"
-                      class="w-full h-full object-contain"
-                      onerror="this.style.display='none'; this.parentElement.innerHTML='<svg class=\\'w-32 h-32 text-${hackathon.color}\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z\\'></path></svg>'"
-                    />
+              <div class="backdrop-blur-xl bg-white/70 dark:bg-dark-elevated/70 rounded-3xl p-8 border border-light-border dark:border-dark-border">
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${colors.gradient} flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                      <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+                    </svg>
                   </div>
+                  <span class="bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent">
+                    Certificate of Achievement
+                  </span>
+                </h2>
+                <div class="relative rounded-2xl overflow-hidden border-4 border-gradient-to-br ${colors.gradient} shadow-2xl">
+                  <img
+                    src="${hackathon.icon}"
+                    alt="${hackathon.name} Certificate"
+                    class="w-full h-auto object-contain bg-white"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-96 bg-gray-100 dark:bg-gray-800\\'><svg class=\\'w-32 h-32 text-gray-400\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\\'></path></svg></div>'"
+                  />
                 </div>
               </div>
             </div>
