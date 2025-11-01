@@ -9,7 +9,7 @@ export const hackathons: Hackathon[] = [
     description: 'Developed machine learning models for real-time collision detection in foggy weather. Achieved 85%+ accuracy using a dataset of over 500,000 data points. Secured 3rd place among 800 global teams and earned a $200 cash prize for innovation in road safety technology.',
     project: 'Machine Learning and Artificial Intelligence',
     achievement: '3rd Place among 800 teams',
-    icon: '/images/certifications/cert1.png',
+    icon: '/images/hackathons/cert1.png',
     color: 'cyber-blue'
   },
   {
@@ -20,7 +20,12 @@ export const hackathons: Hackathon[] = [
     description: 'Developed a waste management automation web app for dark stores. Utilized Machine Learning & AI to optimize waste segregation, enhancing efficiency by 60%. Built a scalable website infrastructure that processed 10,000+ data points for real-time waste categorization.',
     project: 'Smart Automation and Technology',
     achievement: 'Top 16 among 150+ teams',
-    icon: '/images/hackathons/blinkit.png',
-    color: 'cyber-green'
+    icon: '/images/hackathons/img1.png',
+    color: 'cyber-green',
+    showCertificate: false,
+    gallery: [
+      '/images/hackathons/img1.png',
+      '/images/hackathons/img2.png'
+    ]
   }
 ];

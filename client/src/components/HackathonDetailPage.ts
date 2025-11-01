@@ -38,6 +38,68 @@ export class HackathonDetailPage {
 
     const colors = colorClasses[hackathon.color] || colorClasses['cyber-blue'];
 
+    const showCertificate = hackathon.showCertificate !== false && Boolean(hackathon.icon);
+
+    const certificateSection = showCertificate
+      ? `
+            <div class="mb-12 animate-scale-in">
+              <div class="backdrop-blur-xl bg-white/70 dark:bg-dark-elevated/70 rounded-3xl p-8 border border-light-border dark:border-dark-border">
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${colors.gradient} flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                      <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                  <span class="bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent">
+                    Certificate of Achievement
+                  </span>
+                </h2>
+                <div class="relative rounded-2xl overflow-hidden border-4 border-gradient-to-br ${colors.gradient} shadow-2xl">
+                  <img
+                    src="${hackathon.icon}"
+                    alt="${hackathon.name} Certificate"
+                    class="w-full h-auto object-contain bg-white"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-96 bg-gray-100 dark:bg-gray-800\\'><svg class=\\'w-32 h-32 text-gray-400\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\\'></path></svg></div>'"
+                  />
+                </div>
+              </div>
+            </div>
+      `
+      : '';
+
+    const galleryItems = hackathon.gallery?.map((image, index) => `
+              <div class="backdrop-blur-xl bg-white/70 dark:bg-dark-elevated/70 rounded-3xl p-6 border border-light-border dark:border-dark-border">
+                <div class="relative rounded-2xl overflow-hidden border border-${hackathon.color}/30 dark:border-${hackathon.color}/40 shadow-2xl">
+                  <img
+                    src="${image}"
+                    alt="${hackathon.name} showcase ${index + 1}"
+                    class="w-full h-auto object-contain bg-white"
+                  />
+                </div>
+              </div>
+    `).join('') ?? '';
+
+    const gallerySection = hackathon.gallery && hackathon.gallery.length > 0
+      ? `
+            <div class="mb-12 animate-fade-in">
+              <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${colors.gradient} flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 5a3 3 0 013-3h12a3 3 0 013 3v14a1 1 0 01-1.555.832l-3.89-2.593a1 1 0 00-1.11 0l-3.89 2.593A1 1 0 0110 19v-2.382l-4.553 3.036A1 1 0 014 18V5z"/>
+                  </svg>
+                </div>
+                <span class="bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent">
+                  Media Gallery
+                </span>
+              </h2>
+              <div class="space-y-6">
+                ${galleryItems}
+              </div>
+            </div>
+      `
+      : '';
+
     const html = `
       <div class="fixed inset-0 z-50 overflow-y-auto bg-light-bg dark:bg-dark-bg animate-fade-in">
         <!-- Animated Background -->
@@ -100,30 +162,6 @@ export class HackathonDetailPage {
             </div>
 
             <!-- Certificate Display -->
-            <div class="mb-12 animate-scale-in">
-              <div class="backdrop-blur-xl bg-white/70 dark:bg-dark-elevated/70 rounded-3xl p-8 border border-light-border dark:border-dark-border">
-                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${colors.gradient} flex items-center justify-center">
-                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                      <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
-                    </svg>
-                  </div>
-                  <span class="bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent">
-                    Certificate of Achievement
-                  </span>
-                </h2>
-                <div class="relative rounded-2xl overflow-hidden border-4 border-gradient-to-br ${colors.gradient} shadow-2xl">
-                  <img
-                    src="${hackathon.icon}"
-                    alt="${hackathon.name} Certificate"
-                    class="w-full h-auto object-contain bg-white"
-                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-96 bg-gray-100 dark:bg-gray-800\\'><svg class=\\'w-32 h-32 text-gray-400\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'2\\' d=\\'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z\\'></path></svg></div>'"
-                  />
-                </div>
-              </div>
-            </div>
-
             <!-- Project Details -->
             <div class="grid md:grid-cols-2 gap-8">
               <!-- Project Card -->
@@ -187,6 +225,9 @@ export class HackathonDetailPage {
                 </ul>
               </div>
             </div>
+
+            ${certificateSection}
+            ${gallerySection}
           </div>
         </div>
       </div>
