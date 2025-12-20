@@ -59,19 +59,39 @@ export class ExperienceDetailPage {
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <!-- Experience Hero -->
             <div class="mb-12 animate-slide-in">
-              <!-- Type Badge -->
-              <div class="mb-6">
-                <span class="inline-block px-6 py-2 rounded-full ${colors.badge} text-white font-semibold text-sm uppercase tracking-wider shadow-cyber">
-                  ${experience.type}
-                </span>
-              </div>
+              <div class="flex items-start gap-6 mb-8">
+                <!-- Company Logo -->
+                ${experience.logo ? `
+                  <div class="flex-shrink-0">
+                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-gradient-to-r ${colors.gradient} p-1 shadow-2xl">
+                      <div class="w-full h-full rounded-2xl bg-white dark:bg-gray-900 flex items-center justify-center p-4">
+                        <img src="${experience.logo}" alt="${experience.company}" class="w-full h-full object-contain" onerror="this.style.display='none'"/>
+                      </div>
+                    </div>
+                  </div>
+                ` : ''}
+                
+                <div class="flex-1">
+                  <!-- Type Badge -->
+                  <div class="mb-4">
+                    <span class="inline-block px-6 py-2 rounded-full ${colors.badge} text-white font-semibold text-sm uppercase tracking-wider shadow-cyber">
+                      ${experience.type}
+                    </span>
+                  </div>
 
-              <!-- Title -->
-              <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                <span class="bg-gradient-cyber bg-clip-text text-transparent animate-gradient-x">
-                  ${experience.role}
-                </span>
-              </h1>
+                  <!-- Title -->
+                  <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    <span class="bg-gradient-cyber bg-clip-text text-transparent animate-gradient-x">
+                      ${experience.role}
+                    </span>
+                  </h1>
+
+                  <!-- Company -->
+                  <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+                    ${experience.company}
+                  </h2>
+                </div>
+              </div>
 
               <!-- Company & Details -->
               <div class="flex flex-wrap items-center gap-6 text-xl text-gray-700 dark:text-gray-300 mb-6">
