@@ -12,28 +12,29 @@ export class AchievementsSection {
     this.cleanup();
 
     const html = `
-      <section class="relative py-32 overflow-hidden bg-gradient-to-br from-emerald-50/80 via-teal-50/80 to-cyan-50/80 dark:from-gray-950/90 dark:via-emerald-950/30 dark:to-cyan-950/30">
-        <!-- Floating Decorative Elements -->
-        <div class="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full opacity-10 blur-3xl animate-particle"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-full opacity-10 blur-3xl animate-particle" style="animation-delay: 3s;"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-teal-400 to-green-500 rounded-full opacity-5 blur-3xl animate-particle" style="animation-delay: 1.5s;"></div>
+      <section class="relative py-32 overflow-hidden bg-gradient-to-br from-gray-950 via-emerald-950 to-teal-950">
+        <!-- Animated Background -->
+        <div class="absolute inset-0">
+          <div class="absolute top-[20%] right-[15%] w-[400px] h-[400px] bg-gradient-to-br from-emerald-500/20 to-teal-500/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
+          <div class="absolute bottom-[20%] left-[10%] w-[500px] h-[500px] bg-gradient-to-tl from-green-500/20 to-cyan-500/10 rounded-full filter blur-3xl animate-pulse-slower"></div>
+        </div>
 
         <!-- Content -->
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <!-- Header -->
           <div class="text-center mb-20 animate-fade-in">
             <h2 class="text-5xl md:text-6xl font-black mb-6">
-              <span class="bg-gradient-to-r from-green-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+              <span class="bg-gradient-to-r from-emerald-300 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 Coding Achievements
               </span>
             </h2>
             <div class="flex items-center justify-center gap-2 mb-6">
-              <div class="h-1 w-20 bg-gradient-to-r from-green-500 to-teal-500 rounded-full"></div>
+              <div class="h-1 w-20 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></div>
               <div class="h-1 w-10 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full"></div>
               <div class="h-1 w-20 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
             </div>
-            <p class="mt-6 text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-              <span class="font-bold text-transparent bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text">1250+ problems solved</span> across competitive programming platforms
+            <p class="mt-6 text-xl text-gray-400 max-w-2xl mx-auto">
+              <span class="font-bold text-transparent bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text">1250+ problems solved</span> across competitive programming platforms
             </p>
           </div>
 
@@ -86,15 +87,15 @@ export class AchievementsSection {
         style="opacity: 0; transform-style: preserve-3d;"
       >
         <!-- Card -->
-        <div class="relative h-full backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/70 dark:from-gray-900/90 dark:to-gray-800/70 rounded-3xl overflow-hidden border border-white/30 dark:border-gray-700/30 shadow-2xl hover-lift">
+        <div class="relative h-full backdrop-blur-2xl bg-gray-900/90 border-2 border-gray-800/50 rounded-3xl overflow-hidden shadow-2xl hover-lift hover:border-${achievement.platform === 'gfg' ? 'emerald' : achievement.platform === 'leetcode' ? 'orange' : 'cyan'}-500/50 transition-all duration-500">
           <!-- Animated Gradient Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-br ${gradients[achievement.platform]} opacity-0 group-hover:opacity-15 transition-all duration-700"></div>
+          <div class="absolute inset-0 bg-gradient-to-br ${gradients[achievement.platform]} opacity-0 group-hover:opacity-10 transition-all duration-700"></div>
 
           <!-- Shimmer Effect -->
           <div class="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
           <!-- Glow Border -->
-          <div class="absolute -inset-1 bg-gradient-to-r ${gradients[achievement.platform]} rounded-3xl blur-2xl opacity-0 group-hover:opacity-50 transition-all duration-700 -z-10"></div>
+          <div class="absolute -inset-1 bg-gradient-to-r ${gradients[achievement.platform]} rounded-3xl blur-2xl opacity-0 group-hover:opacity-40 transition-all duration-700 -z-10"></div>
 
           <!-- Content -->
           <div class="relative p-8">
@@ -106,7 +107,7 @@ export class AchievementsSection {
 
                 <!-- Logo Container -->
                 <div class="relative w-24 h-24 rounded-2xl bg-gradient-to-br ${gradients[achievement.platform]} p-1 shadow-2xl magnetic-btn">
-                  <div class="w-full h-full rounded-2xl bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden p-3">
+                  <div class="w-full h-full rounded-2xl bg-gray-950 flex items-center justify-center overflow-hidden p-3">
                     <img
                       src="${achievement.icon}"
                       alt="${names[achievement.platform]}"
@@ -129,7 +130,7 @@ export class AchievementsSection {
             <h3 class="text-3xl font-black bg-gradient-to-r ${gradients[achievement.platform]} bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-transform duration-500">
               ${names[achievement.platform]}
             </h3>
-            <p class="text-lg font-bold text-gray-700 dark:text-gray-300 mb-8">@${achievement.username}</p>
+            <p class="text-lg font-bold text-gray-300 mb-8">@${achievement.username}</p>
 
             <!-- Stats Grid -->
             <div class="space-y-4">
@@ -156,8 +157,8 @@ export class AchievementsSection {
 
     if (achievement.stats.problemsSolved) {
       stats.push(`
-        <div class="flex items-center justify-between p-4 rounded-2xl ${bgColor} backdrop-blur-xl border border-white/20 dark:border-gray-700/20 hover:scale-105 transition-transform duration-300">
-          <span class="text-gray-700 dark:text-gray-300 font-bold flex items-center gap-3">
+        <div class="flex items-center justify-between p-4 rounded-2xl ${bgColor} backdrop-blur-xl border border-gray-700/30 hover:scale-105 transition-transform duration-300">
+          <span class="text-gray-300 font-bold flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-r ${gradient} flex items-center justify-center">
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -172,8 +173,8 @@ export class AchievementsSection {
 
     if (achievement.stats.score) {
       stats.push(`
-        <div class="flex items-center justify-between p-4 rounded-2xl ${bgColor} backdrop-blur-xl border border-white/20 dark:border-gray-700/20 hover:scale-105 transition-transform duration-300">
-          <span class="text-gray-700 dark:text-gray-300 font-bold flex items-center gap-3">
+        <div class="flex items-center justify-between p-4 rounded-2xl ${bgColor} backdrop-blur-xl border border-gray-700/30 hover:scale-105 transition-transform duration-300">
+          <span class="text-gray-300 font-bold flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-r ${gradient} flex items-center justify-center">
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
@@ -188,8 +189,8 @@ export class AchievementsSection {
 
     if (achievement.stats.rating) {
       stats.push(`
-        <div class="flex items-center justify-between p-4 rounded-2xl ${bgColor} backdrop-blur-xl border border-white/20 dark:border-gray-700/20 hover:scale-105 transition-transform duration-300">
-          <span class="text-gray-700 dark:text-gray-300 font-bold flex items-center gap-3">
+        <div class="flex items-center justify-between p-4 rounded-2xl ${bgColor} backdrop-blur-xl border border-gray-700/30 hover:scale-105 transition-transform duration-300">
+          <span class="text-gray-300 font-bold flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-r ${gradient} flex items-center justify-center">
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
@@ -204,8 +205,8 @@ export class AchievementsSection {
 
     if (achievement.stats.streak) {
       stats.push(`
-        <div class="flex items-center justify-between p-4 rounded-2xl ${bgColor} backdrop-blur-xl border border-white/20 dark:border-gray-700/20 hover:scale-105 transition-transform duration-300">
-          <span class="text-gray-700 dark:text-gray-300 font-bold flex items-center gap-3">
+        <div class="flex items-center justify-between p-4 rounded-2xl ${bgColor} backdrop-blur-xl border border-gray-700/30 hover:scale-105 transition-transform duration-300">
+          <span class="text-gray-300 font-bold flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-r ${gradient} flex items-center justify-center">
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
