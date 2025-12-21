@@ -39,6 +39,7 @@ export interface Experience {
   type: 'internship' | 'full-time';
   skills: string[];
   achievements: string[];
+  logo?: string;
 }
 
 export interface Skill {
