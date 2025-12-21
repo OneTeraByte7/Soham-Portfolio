@@ -72,24 +72,24 @@ export class ProjectsSection {
     const staggerClass = `stagger-delay-${(index % 6) + 1}`;
 
     return `
-      <div class="project-card group relative backdrop-blur-2xl bg-gradient-to-br from-white/80 to-white/60 dark:from-gray-900/80 dark:to-gray-800/60 rounded-3xl overflow-hidden border border-white/20 dark:border-gray-700/30 cursor-pointer animate-stagger ${staggerClass} ${bentoClass} hover-lift" data-project-id="${project.id}" style="opacity: 0; transform-style: preserve-3d;">
+      <div class="project-card group relative backdrop-blur-2xl bg-gray-900/90 border-2 border-gray-800/50 rounded-3xl overflow-hidden cursor-pointer animate-stagger ${staggerClass} ${bentoClass} hover-lift hover:border-${project.category === 'ai' ? 'violet' : project.category === 'web' ? 'orange' : 'cyan'}-500/50 transition-all duration-500" data-project-id="${project.id}" style="opacity: 0; transform-style: preserve-3d;">
 
         <!-- Animated Gradient Background -->
-        <div class="absolute inset-0 bg-gradient-to-br ${categoryGradients[project.category]} opacity-0 group-hover:opacity-20 transition-all duration-700 animate-morph"></div>
+        <div class="absolute inset-0 bg-gradient-to-br ${categoryGradients[project.category]} opacity-0 group-hover:opacity-10 transition-all duration-700"></div>
 
         <!-- Shimmer Effect -->
         <div class="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
         <!-- Morphing Border Glow -->
-        <div class="absolute -inset-1 bg-gradient-to-r ${categoryGradients[project.category]} rounded-3xl blur-xl opacity-0 group-hover:opacity-60 transition-all duration-700 -z-10"></div>
+        <div class="absolute -inset-1 bg-gradient-to-r ${categoryGradients[project.category]} rounded-3xl blur-xl opacity-0 group-hover:opacity-40 transition-all duration-700 -z-10"></div>
 
         <!-- Project Image with Clip-path Reveal -->
-        <div class="relative h-56 overflow-hidden">
+        <div class="relative h-56 overflow-hidden bg-gray-950">
           <div class="absolute inset-0 bg-gradient-to-br ${categoryGradients[project.category]} opacity-20"></div>
           <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:rotate-2" />
 
           <!-- Liquid Overlay on Hover -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-center">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-center">
             <div class="text-center transform translate-y-8 group-hover:translate-y-0 transition-all duration-700 delay-100">
               <div class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/30 text-white font-bold magnetic-btn hover-glow">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,7 +102,7 @@ export class ProjectsSection {
           </div>
 
           <!-- Floating Category Badge -->
-          <div class="absolute top-5 left-5 px-5 py-2 rounded-full bg-gradient-to-r ${categoryGradients[project.category]} text-white text-xs font-black uppercase tracking-widest shadow-2xl animate-bounce-glow">
+          <div class="absolute top-5 left-5 px-5 py-2 rounded-full bg-gradient-to-r ${categoryGradients[project.category]} text-white text-xs font-black uppercase tracking-widest shadow-2xl">
             ${project.category}
           </div>
 
