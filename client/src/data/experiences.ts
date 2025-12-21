@@ -20,7 +20,8 @@ export const experiences: Experience[] = [
       'Improved inference speed by 30%',
       'Maintained 95% model accuracy',
       'Reduced manual effort by 60%'
-    ]
+    ],
+    logo: '/images/experience/dl.png'
   },
   {
     id: 'hackncrafts',
@@ -41,6 +42,7 @@ export const experiences: Experience[] = [
       'Delivered 3 full-stack websites',
       'Increased user engagement by 40%',
       'Improved performance by 50%'
-    ]
+    ],
+    logo: '/images/experience/hnc.png'
   }
 ];
