@@ -78,8 +78,8 @@ export class ProjectsSection {
         <!-- Animated Gradient Background (dark only) -->
         <div class="absolute inset-0 bg-transparent dark:bg-gradient-to-br ${darkGradientClasses} opacity-0 dark:opacity-0 dark:group-hover:opacity-10 transition-all duration-700"></div>
 
-        <!-- Shimmer Effect -->
-        <div class="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <!-- Shimmer Effect (subtle in light, stronger in dark) -->
+        <div class="absolute inset-0 shimmer bg-white/10 dark:bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
         <!-- Morphing Border Glow (dark only) -->
         <div class="absolute -inset-1 bg-transparent dark:bg-gradient-to-r ${darkGradientClasses} rounded-3xl blur-xl opacity-0 dark:group-hover:opacity-40 transition-all duration-700 -z-10"></div>
@@ -89,8 +89,8 @@ export class ProjectsSection {
           <div class="absolute inset-0 bg-transparent dark:bg-gradient-to-br ${darkGradientClasses} opacity-0 dark:opacity-20 dark:group-hover:opacity-30 group-hover:opacity-0 transition-all duration-700"></div>
           <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:rotate-2" />
 
-          <!-- Liquid Overlay on Hover -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-center">
+          <!-- Liquid Overlay on Hover (white-ish in light, dark in dark mode) -->
+          <div class="absolute inset-0 bg-gradient-to-t from-white/60 via-white/30 to-transparent dark:from-black dark:via-black/50 dark:to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-center justify-center">
             <div class="text-center transform translate-y-8 group-hover:translate-y-0 transition-all duration-700 delay-100">
               <div class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/30 text-white font-bold magnetic-btn hover-glow">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,8 +107,8 @@ export class ProjectsSection {
             ${project.category}
           </div>
 
-          <!-- Decorative Corner Element -->
-          <div class="absolute top-0 right-0 w-32 h-32 bg-transparent dark:bg-gradient-to-br ${darkGradientClasses} opacity-6 dark:opacity-20 blur-3xl"></div>
+          <!-- Decorative Corner Element (hidden in light mode) -->
+          <div class="absolute top-0 right-0 w-32 h-32 bg-transparent dark:bg-gradient-to-br ${darkGradientClasses} opacity-0 dark:opacity-20 blur-3xl"></div>
         </div>
 
         <!-- Card Content -->
