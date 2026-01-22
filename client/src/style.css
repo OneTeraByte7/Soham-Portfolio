@@ -436,9 +436,26 @@
    ======================================== */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   grid-auto-flow: dense;
+  grid-auto-rows: 420px; /* increased base row height so cards are taller */
+}
+
+@media (min-width: 640px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr); /* two columns on small+ screens */
+    gap: 1.25rem;
+    grid-auto-rows: 480px; /* taller cards on wider screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr); /* keep two columns on large screens as requested */
+    gap: 1.5rem;
+    grid-auto-rows: 520px; /* largest card height for desktop */
+  }
 }
 
 .bento-item-tall {
@@ -454,15 +471,65 @@
   grid-column: span 2;
 }
 
-@media (max-width: 768px) {
-  .bento-item-wide,
-  .bento-item-large {
-    grid-column: span 1;
-  }
+/* Make each project card a full-height flex column so internal layout is uniform */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
 
-  .bento-item-tall,
-  .bento-item-large {
-    grid-row: span 1;
+/* Image area: fixed proportion of the card height */
+.project-card > .relative.h-56 {
+  flex: 0 0 28%;
+  height: auto;
+}
+
+.project-card > .relative.h-56 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content area grows and can scroll if needed */
+.project-card > .relative.p-8 {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden; /* prevent internal scrolling */
+}
+
+/* Keep footer / CTA pinned to bottom of card */
+.project-card > .relative.p-8 > .flex.items-center.justify-between {
+  margin-top: auto;
+}
+
+/* Ensure description truncates but is readable */
+.project-card p.line-clamp-3 {
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Ensure h3 titles in project cards wrap to two lines cleanly */
+.project-card h3.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .project-card h3.line-clamp-2 {
+    font-size: 1.25rem; /* slightly reduce on small screens to avoid slicing */
+    line-height: 1.1;
   }
 }
 

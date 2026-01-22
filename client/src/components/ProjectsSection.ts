@@ -14,7 +14,7 @@ export class ProjectsSection {
   }
 
   render(): void {
-    const projectsContainer = document.querySelector('#projects .grid');
+    const projectsContainer = document.querySelector('#projects-grid');
     if (!projectsContainer) {
       console.error('Projects container not found');
       return;
@@ -23,7 +23,8 @@ export class ProjectsSection {
     // Clean up previous instances
     this.cleanup();
 
-    projectsContainer.innerHTML = projects.map((project, index) => this.renderProjectCard(project, index)).join('');
+    // Render only first 4 projects to keep a clean 2x2 layout
+    projectsContainer.innerHTML = projects.slice(0, 4).map((project, index) => this.renderProjectCard(project, index)).join('');
     this.attachEventListeners();
     this.initializeEffects();
   }
@@ -32,7 +33,8 @@ export class ProjectsSection {
     // Clean up previous instances
     this.cleanup();
 
-    container.innerHTML = projects.map((project, index) => this.renderProjectCard(project, index)).join('');
+    // Render only first 4 projects for a 2x2 uniform grid
+    container.innerHTML = projects.slice(0, 4).map((project, index) => this.renderProjectCard(project, index)).join('');
     this.attachEventListeners();
     this.initializeEffects();
   }
@@ -65,8 +67,8 @@ export class ProjectsSection {
 
     // Bento Grid patterns - balanced sizing for visual interest
     // Pattern: normal, wide, normal, tall, normal, wide (repeats every 6)
-    const bentoPatterns = ['', 'bento-item-wide', '', 'bento-item-tall', '', 'bento-item-wide'];
-    const bentoClass = bentoPatterns[index % bentoPatterns.length];
+    // Keep all cards uniform for a 2x2 grid
+    const bentoClass = '';
 
     // Staggered animation delays
     const staggerClass = `stagger-delay-${(index % 6) + 1}`;
