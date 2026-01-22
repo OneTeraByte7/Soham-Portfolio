@@ -167,7 +167,7 @@ export class App {
                     <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition-opacity"></div>
                     <div class="relative w-10 h-10 bg-gradient-to-br from-cyan-400 to-violet-600 rounded-lg flex items-center justify-center text-white font-black text-xl">S</div>
                   </div>
-                  <h1 class="text-xl font-black bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent hidden sm:block">
+                    <h1 class="text-xl font-black bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent hidden sm:block">
                     Soham J
                   </h1>
                 </a>
@@ -325,14 +325,14 @@ export class App {
                 <!-- Main Heading with Refined Typography -->
                 <div class="space-y-6">
                   <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.95] animate-clip-reveal tracking-tight" style="opacity: 0;">
-                    <span class="block text-white mb-2 drop-shadow-2xl">Soham J</span>
+                    <span class="block text-gray-900 dark:text-white mb-2 drop-shadow-2xl">Soham J</span>
                     <span class="block bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent animate-gradient-x" style="background-size: 200% auto;">Suryawanshi</span>
                   </h1>
 
-                  <div class="flex items-center gap-3 justify-center lg:justify-start animate-slide-up animation-delay-200" style="opacity: 0;">
+                    <div class="flex items-center gap-3 justify-center lg:justify-start animate-slide-up animation-delay-200" style="opacity: 0;">
                     <div class="h-px flex-1 max-w-[60px] bg-gradient-to-r from-transparent to-violet-500/50"></div>
-                    <p class="text-xl md:text-2xl font-mono text-gray-400">
-                      <span class="text-violet-400">@</span><span class="text-gray-300">OneTeraByte13</span>
+                    <p class="text-xl md:text-2xl font-mono text-gray-700 dark:text-gray-400">
+                      <span class="text-violet-400">@</span><span class="text-gray-700 dark:text-gray-300">OneTeraByte13</span>
                     </p>
                     <div class="h-px flex-1 max-w-[60px] bg-gradient-to-l from-transparent to-violet-500/50"></div>
                   </div>
@@ -549,10 +549,10 @@ export class App {
           </div>
         </section>
 
-        <!-- Projects Section - Modern Dark -->
-        <section id="projects" class="relative py-32 overflow-hidden bg-gradient-to-br from-gray-950 via-indigo-950 to-cyan-950">
-          <!-- Animated Background -->
-          <div class="absolute inset-0">
+        <!-- Projects Section -->
+        <section id="projects" class="relative py-32 overflow-hidden bg-white/50 dark:bg-transparent dark:bg-gradient-to-br dark:from-gray-950 dark:via-indigo-950 dark:to-cyan-950">
+          <!-- Animated Background (dark only) -->
+          <div class="absolute inset-0 hidden dark:block">
             <div class="absolute top-[20%] left-[15%] w-[400px] h-[400px] bg-gradient-to-br from-indigo-500/20 to-cyan-500/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
             <div class="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-gradient-to-tl from-blue-500/20 to-violet-500/10 rounded-full filter blur-3xl animate-pulse-slower"></div>
           </div>
