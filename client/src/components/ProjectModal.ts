@@ -11,7 +11,7 @@ export class ProjectModal {
 
   private createModal(): void {
     const modalHTML = `
-      <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+      <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-white/60 dark:bg-black/60 backdrop-blur-sm">
         <div class="relative bg-white dark:bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl modal-content">
           <!-- Close Button -->
           <button id="close-modal" class="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-all duration-300 group">
