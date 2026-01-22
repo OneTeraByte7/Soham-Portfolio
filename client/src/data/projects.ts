@@ -77,4 +77,32 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/OneTeraByte7/AMD-MI300-GPU-HACKATHON_2025',
     category: 'ai'
   }
+  ,
+  {
+    id: 'mlops-churn',
+    title: 'MLOps Pipeline — MLflow + FastAPI',
+    description: 'A production-ready, end-to-end MLOps pipeline for customer churn prediction in SaaS businesses.',
+    longDescription: `This project demonstrates best practices for deploying machine learning models to production, including automated training, monitoring, drift detection, A/B testing, and CI/CD. It includes data versioning with DVC, experiment tracking with MLflow, model serving via FastAPI, drift detection, and automated retraining workflows.`,
+    image: '/images/projects/mlops.jpg',
+    technologies: ['Python', 'MLflow', 'FastAPI', 'XGBoost', 'DVC', 'Docker', 'Kubernetes', 'Prometheus', 'Grafana', 'GitHub Actions'],
+    achievements: [
+      'Reproducible experiments with MLflow',
+      'Data versioning and lineage with DVC',
+      'Automated retraining and safe deployment',
+      'Integrated monitoring, drift detection and A/B testing'
+    ],
+    features: [
+      'Data Versioning (DVC) and reproducible pipelines',
+      'Experiment Tracking and Model Registry (MLflow)',
+      'Automated training with XGBoost and early stopping',
+      'Model Serving API using FastAPI with health & metrics endpoints',
+      'A/B testing infrastructure with traffic splitting',
+      'Feature & label drift detection (PSI, KS tests)',
+      'Prometheus metrics and Grafana dashboards',
+      'CI/CD with GitHub Actions and safe rollback mechanisms'
+    ],
+    githubUrl: 'https://github.com/OneTeraByte7/MLOps',
+    liveUrl: '#',
+    category: 'fullstack'
+  }
 ];
