@@ -43,6 +43,18 @@ export class App {
     // Render the app
     this.render();
 
+    // Ensure theme toggle works even if other handlers interfere
+    const themeToggleEl = document.getElementById('theme-toggle');
+    const themeToggleMobileEl = document.getElementById('theme-toggle-mobile');
+    themeToggleEl?.addEventListener('click', (e) => {
+      e.preventDefault();
+      ThemeManager.getInstance().toggle();
+    });
+    themeToggleMobileEl?.addEventListener('click', (e) => {
+      e.preventDefault();
+      ThemeManager.getInstance().toggle();
+    });
+
     // Re-initialize detail page components after DOM is ready
     this.projectDetailPage = new ProjectDetailPage('project-detail-root');
     this.hackathonDetailPage = new HackathonDetailPage('detail-root');
@@ -145,7 +157,7 @@ export class App {
       <div class="min-h-screen bg-light-bg dark:bg-dark-bg transition-colors duration-300">
         <div class="portfolio-main-content">
         <!-- Modern Glassmorphic Navigation -->
-        <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-black/60 border-b border-white/10 transition-all duration-300 shadow-xl shadow-black/20">
+        <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-white/60 dark:bg-black/60 border-b border-light-border dark:border-white/10 transition-all duration-300 shadow-xl shadow-black/20">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
               <!-- Logo with Gradient -->
@@ -163,20 +175,20 @@ export class App {
 
               <!-- Desktop Nav Links -->
               <div class="hidden lg:flex items-center gap-1">
-                <a href="#hero" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Home</a>
-                <a href="#about" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">About</a>
-                <a href="#experience" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Experience</a>
-                <a href="#hackathons" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Hackathons</a>
-                <a href="#skills" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Skills</a>
-                <a href="#projects" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Projects</a>
-                <a href="#achievements" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Coding</a>
-                <a href="#certifications" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Certifications</a>
-                <a href="#contact" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Contact</a>
+                <a href="#hero" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Home</a>
+                <a href="#about" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">About</a>
+                <a href="#experience" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Experience</a>
+                <a href="#hackathons" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Hackathons</a>
+                <a href="#skills" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Skills</a>
+                <a href="#projects" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Projects</a>
+                <a href="#achievements" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Coding</a>
+                <a href="#certifications" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Certifications</a>
+                <a href="#contact" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-sm backdrop-blur-xl">Contact</a>
               </div>
 
               <!-- Theme Toggle - Refined -->
               <button id="theme-toggle" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/30 transition-all hover:scale-110 backdrop-blur-xl">
-                <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path class="dark:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
                   <path class="hidden dark:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
                 </svg>
@@ -186,7 +198,7 @@ export class App {
         </nav>
 
         <!-- Hero Section - Ultra Modern Aesthetic Design -->
-        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-black">
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 bg-light-bg dark:bg-dark-bg">
 
           <!-- Dynamic Gradient Mesh Background -->
           <div class="absolute inset-0">
@@ -211,7 +223,8 @@ export class App {
           </div>
 
           <!-- Dot Matrix Overlay -->
-          <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+          <div class="absolute inset-0 opacity-8 dark:hidden" style="background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px); background-size: 40px 40px;"></div>
+          <div class="absolute inset-0 opacity-10 hidden dark:block" style="background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
 
           <!-- Content Container -->
           <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
