@@ -29,8 +29,12 @@ export class Router {
     this.notifyListeners();
   }
 
-  public navigate(path: string): void {
-    window.location.hash = path;
+  public navigate(path: string, opts?: { from?: string }): void {
+    const state = opts && opts.from ? { fromSection: opts.from, scrollY: window.scrollY } : null;
+    // Use pushState so the previous entry can hold the section/scroll info
+    history.pushState(state, '', `#${path}`);
+    // notify listeners since hashchange won't fire for pushState
+    this.handleRouteChange();
   }
 
   public onRouteChange(callback: (route: string) => void): void {

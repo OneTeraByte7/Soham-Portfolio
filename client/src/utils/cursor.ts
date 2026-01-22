@@ -45,11 +45,10 @@ export class CustomCursor {
       position: fixed;
       width: 8px;
       height: 8px;
-      background: linear-gradient(135deg, #00a0ff, #7000ff);
       border-radius: 50%;
       pointer-events: none;
       z-index: 10000;
-      transition: transform 0.1s ease, opacity 0.1s ease;
+      transition: transform 0.1s ease, opacity 0.1s ease, background 0.2s ease;
       opacity: 0;
     `;
     document.body.appendChild(dot);
@@ -105,6 +104,21 @@ export class CustomCursor {
 
     // Animate cursor
     this.animate();
+    // Set initial dot color based on theme and observe theme changes
+    this.updateDotForTheme();
+    const obs = new MutationObserver(() => this.updateDotForTheme());
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  private updateDotForTheme(): void {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (isDark) {
+      this.cursorDot.style.background = 'linear-gradient(135deg, #00a0ff, #7000ff)';
+      this.cursor.style.borderColor = 'rgba(0,160,255,0.5)';
+    } else {
+      this.cursorDot.style.background = '#ffffff';
+      this.cursor.style.borderColor = 'rgba(0,0,0,0.12)';
+    }
   }
 
   private animate(): void {

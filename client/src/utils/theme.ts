@@ -1,7 +1,3 @@
-/**
- * Theme management utility
- */
-
 export class ThemeManager {
   private static instance: ThemeManager;
 
@@ -42,10 +38,19 @@ export class ThemeManager {
   }
 
   private attachEventListeners(): void {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-
-    themeToggle?.addEventListener('click', () => this.toggle());
-    themeToggleMobile?.addEventListener('click', () => this.toggle());
+    // Use event delegation so toggles work even if rendered after this manager is created
+    // Use capture phase to ensure we see clicks even if other handlers stop propagation
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      if (!(t instanceof Element)) return; // ignore text nodes
+      const toggle = t.closest('#theme-toggle') || t.closest('#theme-toggle-mobile');
+      if (toggle) {
+        // helpful debug log when user reports toggle not working
+        // eslint-disable-next-line no-console
+        console.debug('Theme toggle clicked (delegated)');
+        e.preventDefault();
+        this.toggle();
+      }
+    }, true);
   }
 }
