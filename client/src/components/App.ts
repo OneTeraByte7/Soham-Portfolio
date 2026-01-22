@@ -73,6 +73,23 @@ export class App {
           (mainContent as HTMLElement).style.display = 'none';
         } else {
           (mainContent as HTMLElement).style.display = 'block';
+          // Restore scroll/section if available in history state
+          const state = history.state as { fromSection?: string; scrollY?: number } | null;
+          if (state) {
+            if (state.fromSection) {
+              const target = document.getElementById(state.fromSection);
+              if (target) {
+                // Scroll to the section (use timeout to ensure content is visible)
+                setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+              } else if (typeof state.scrollY === 'number') {
+                setTimeout(() => window.scrollTo({ top: state.scrollY, behavior: 'smooth' }), 50);
+              }
+            } else if (typeof state.scrollY === 'number') {
+              setTimeout(() => window.scrollTo({ top: state.scrollY, behavior: 'smooth' }), 50);
+            }
+            // Clear state to avoid repeated scrolling
+            history.replaceState(null, '', window.location.hash);
+          }
         }
       }
 
