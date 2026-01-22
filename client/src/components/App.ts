@@ -202,24 +202,45 @@ export class App {
 
           <!-- Dynamic Gradient Mesh Background -->
           <div class="absolute inset-0">
-            <!-- Animated Gradient Orbs -->
-            <div class="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-gradient-to-br from-cyan-500/30 via-blue-500/20 to-transparent rounded-full filter blur-3xl animate-pulse-slow"></div>
-            <div class="absolute bottom-[10%] right-[15%] w-[600px] h-[600px] bg-gradient-to-tl from-violet-500/30 via-purple-500/20 to-transparent rounded-full filter blur-3xl animate-pulse-slower"></div>
-            <div class="absolute top-[50%] right-[20%] w-[400px] h-[400px] bg-gradient-to-br from-fuchsia-500/25 via-pink-500/15 to-transparent rounded-full filter blur-3xl animate-float-slow"></div>
-            
-            <!-- Animated Lines -->
-            <svg class="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.5" />
-                  <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
-                  <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0.5" />
-                </linearGradient>
-              </defs>
-              <line x1="0" y1="20%" x2="100%" y2="20%" stroke="url(#line-gradient)" stroke-width="1" class="animate-dash"/>
-              <line x1="0" y1="50%" x2="100%" y2="50%" stroke="url(#line-gradient)" stroke-width="1" class="animate-dash"/>
-              <line x1="0" y1="80%" x2="100%" y2="80%" stroke="url(#line-gradient)" stroke-width="1" class="animate-dash"/>
-            </svg>
+            <!-- Light theme orbs + lines -->
+            <div class="absolute inset-0 dark:hidden">
+              <div class="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-gradient-to-br from-white/70 via-white/40 to-transparent rounded-full filter blur-3xl animate-pulse-slow"></div>
+              <div class="absolute bottom-[10%] right-[15%] w-[600px] h-[600px] bg-gradient-to-tl from-white/60 via-white/30 to-transparent rounded-full filter blur-3xl animate-pulse-slower"></div>
+              <div class="absolute top-[50%] right-[20%] w-[400px] h-[400px] bg-gradient-to-br from-white/60 via-white/30 to-transparent rounded-full filter blur-3xl animate-float-slow"></div>
+
+              <svg class="absolute inset-0 w-full h-full opacity-08" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="line-gradient-light" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#e6f7ff;stop-opacity:0.3" />
+                    <stop offset="50%" style="stop-color:#f3f8ff;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.3" />
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="20%" x2="100%" y2="20%" stroke="url(#line-gradient-light)" stroke-width="1" class="animate-dash"/>
+                <line x1="0" y1="50%" x2="100%" y2="50%" stroke="url(#line-gradient-light)" stroke-width="1" class="animate-dash"/>
+                <line x1="0" y1="80%" x2="100%" y2="80%" stroke="url(#line-gradient-light)" stroke-width="1" class="animate-dash"/>
+              </svg>
+            </div>
+
+            <!-- Dark theme orbs + lines -->
+            <div class="hidden dark:block absolute inset-0">
+              <div class="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-gradient-to-br from-cyan-500/30 via-blue-500/20 to-transparent rounded-full filter blur-3xl animate-pulse-slow"></div>
+              <div class="absolute bottom-[10%] right-[15%] w-[600px] h-[600px] bg-gradient-to-tl from-violet-500/30 via-purple-500/20 to-transparent rounded-full filter blur-3xl animate-pulse-slower"></div>
+              <div class="absolute top-[50%] right-[20%] w-[400px] h-[400px] bg-gradient-to-br from-fuchsia-500/25 via-pink-500/15 to-transparent rounded-full filter blur-3xl animate-float-slow"></div>
+
+              <svg class="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="line-gradient-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.5" />
+                    <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+                    <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0.5" />
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="20%" x2="100%" y2="20%" stroke="url(#line-gradient-dark)" stroke-width="1" class="animate-dash"/>
+                <line x1="0" y1="50%" x2="100%" y2="50%" stroke="url(#line-gradient-dark)" stroke-width="1" class="animate-dash"/>
+                <line x1="0" y1="80%" x2="100%" y2="80%" stroke="url(#line-gradient-dark)" stroke-width="1" class="animate-dash"/>
+              </svg>
+            </div>
           </div>
 
           <!-- Dot Matrix Overlay -->
