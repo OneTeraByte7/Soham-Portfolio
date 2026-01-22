@@ -70,22 +70,23 @@ export class ProjectsSection {
 
     // Staggered animation delays
     const staggerClass = `stagger-delay-${(index % 6) + 1}`;
+    const darkGradientClasses = categoryGradients[project.category].split(' ').map(c => `dark:${c}`).join(' ');
 
     return `
-      <div class="project-card group relative backdrop-blur-2xl bg-gray-900/90 border-2 border-gray-800/50 rounded-3xl overflow-hidden cursor-pointer animate-stagger ${staggerClass} ${bentoClass} hover-lift hover:border-${project.category === 'ai' ? 'violet' : project.category === 'web' ? 'orange' : 'cyan'}-500/50 transition-all duration-500" data-project-id="${project.id}" style="opacity: 0; transform-style: preserve-3d;">
+      <div class="project-card group relative backdrop-blur-2xl bg-white/90 dark:bg-gray-900/90 border-2 border-gray-200/30 dark:border-gray-800/50 rounded-3xl overflow-hidden cursor-pointer animate-stagger ${staggerClass} ${bentoClass} hover-lift hover:border-${project.category === 'ai' ? 'violet' : project.category === 'web' ? 'orange' : 'cyan'}-500/50 transition-all duration-500" data-project-id="${project.id}" style="opacity: 0; transform-style: preserve-3d;">
 
-        <!-- Animated Gradient Background -->
-        <div class="absolute inset-0 bg-gradient-to-br ${categoryGradients[project.category]} opacity-0 group-hover:opacity-10 transition-all duration-700"></div>
+        <!-- Animated Gradient Background (dark only) -->
+        <div class="absolute inset-0 bg-transparent dark:bg-gradient-to-br ${darkGradientClasses} opacity-0 dark:opacity-0 dark:group-hover:opacity-10 transition-all duration-700"></div>
 
         <!-- Shimmer Effect -->
         <div class="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-        <!-- Morphing Border Glow -->
-        <div class="absolute -inset-1 bg-gradient-to-r ${categoryGradients[project.category]} rounded-3xl blur-xl opacity-0 group-hover:opacity-40 transition-all duration-700 -z-10"></div>
+        <!-- Morphing Border Glow (dark only) -->
+        <div class="absolute -inset-1 bg-transparent dark:bg-gradient-to-r ${darkGradientClasses} rounded-3xl blur-xl opacity-0 dark:group-hover:opacity-40 transition-all duration-700 -z-10"></div>
 
         <!-- Project Image with Clip-path Reveal -->
-        <div class="relative h-56 overflow-hidden bg-gray-950">
-          <div class="absolute inset-0 bg-gradient-to-br ${categoryGradients[project.category]} opacity-20"></div>
+        <div class="relative h-56 overflow-hidden bg-white/80 dark:bg-gray-950">
+          <div class="absolute inset-0 bg-transparent dark:bg-gradient-to-br ${darkGradientClasses} opacity-0 dark:opacity-20 dark:group-hover:opacity-30 group-hover:opacity-0 transition-all duration-700"></div>
           <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:rotate-2" />
 
           <!-- Liquid Overlay on Hover -->
@@ -107,7 +108,7 @@ export class ProjectsSection {
           </div>
 
           <!-- Decorative Corner Element -->
-          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${categoryGradients[project.category]} opacity-20 blur-3xl"></div>
+          <div class="absolute top-0 right-0 w-32 h-32 bg-transparent dark:bg-gradient-to-br ${darkGradientClasses} opacity-6 dark:opacity-20 blur-3xl"></div>
         </div>
 
         <!-- Card Content -->
@@ -161,8 +162,8 @@ export class ProjectsSection {
           </div>
         </div>
 
-        <!-- Corner Accent -->
-        <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr ${categoryGradients[project.category]} opacity-10 blur-2xl"></div>
+        <!-- Corner Accent (dark only) -->
+        <div class="absolute bottom-0 left-0 w-24 h-24 bg-transparent dark:bg-gradient-to-tr ${darkGradientClasses} dark:opacity-10 opacity-0 blur-2xl"></div>
       </div>
     `;
   }
@@ -173,7 +174,7 @@ export class ProjectsSection {
       card.addEventListener('click', () => {
         const projectId = (card as HTMLElement).dataset.projectId;
         if (projectId) {
-          this.router.navigate(`/project/${projectId}`);
+          this.router.navigate(`/project/${projectId}`, { from: 'projects' });
         }
       });
     });
