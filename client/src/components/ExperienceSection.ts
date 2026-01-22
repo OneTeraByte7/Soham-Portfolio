@@ -268,7 +268,7 @@ export class ExperienceSection {
       card.addEventListener('click', () => {
         const experienceId = (card as HTMLElement).dataset.experienceId;
         if (experienceId) {
-          this.router.navigate(`/experience/${experienceId}`);
+          this.router.navigate(`/experience/${experienceId}`, { from: 'experience' });
         }
       });
     });
