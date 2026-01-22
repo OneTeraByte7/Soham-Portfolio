@@ -209,7 +209,7 @@ export class HackathonDetailPage {
   private attachEventListeners(): void {
     const backButton = document.getElementById('back-button');
     backButton?.addEventListener('click', () => {
-      this.router.navigate('/');
+      this.router.goBack();
     });
   }
 
