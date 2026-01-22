@@ -56,7 +56,7 @@ export class HackathonsSection {
       card.addEventListener('click', () => {
         const hackathonId = (card as HTMLElement).dataset.hackathonId;
         if (hackathonId) {
-          this.router.navigate(`/hackathon/${hackathonId}`);
+          this.router.navigate(`/hackathon/${hackathonId}`, { from: 'hackathons' });
         }
       });
     });
