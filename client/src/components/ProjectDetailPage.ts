@@ -201,7 +201,7 @@ export class ProjectDetailPage {
   private attachEventListeners(): void {
     const backButton = document.getElementById('back-button');
     backButton?.addEventListener('click', () => {
-      this.router.navigate('/');
+      this.router.goBack();
     });
   }
 
