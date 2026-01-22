@@ -12,7 +12,7 @@ export class AchievementsSection {
     this.cleanup();
 
     const html = `
-      <section class="relative py-32 overflow-hidden bg-gradient-to-br from-gray-950 via-emerald-950 to-teal-950">
+      <section class="relative py-32 overflow-hidden bg-gradient-to-br from-white/80 via-emerald-50 to-teal-50 dark:from-gray-950 dark:via-emerald-950 dark:to-teal-950">
         <!-- Animated Background -->
         <div class="absolute inset-0">
           <div class="absolute top-[20%] right-[15%] w-[400px] h-[400px] bg-gradient-to-br from-emerald-500/20 to-teal-500/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
