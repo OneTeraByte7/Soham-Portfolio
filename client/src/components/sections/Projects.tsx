@@ -4,9 +4,11 @@ import { portfolio } from '../../data/portfolio';
 import { SectionLabel } from '../ui/SectionLabel';
 import { GlowCard } from '../ui/GlowCard';
 import { Github, ExternalLink } from 'lucide-react';
+import { ProjectModal } from '../ui/ProjectModal';
 
 export function Projects() {
   const [filter, setFilter] = useState('ALL');
+  const [selectedProject, setSelectedProject] = useState<any>(null);
   const filters = ['ALL', 'WEB', 'ML', 'TOOLS', 'SYSTEMS'];
 
   const filteredProjects = portfolio.projects.filter(p => 
@@ -53,6 +55,8 @@ export function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
+                className="cursor-pointer"
+                onClick={() => setSelectedProject(project)}
               >
                 <GlowCard glowColor="blue" className="group overflow-hidden">
                   <div className="flex flex-col lg:flex-row min-h-[400px]">
@@ -109,8 +113,10 @@ export function Projects() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.5, delay: i * 0.05 }}
+                    className="cursor-pointer"
+                    onClick={() => setSelectedProject(project)}
                   >
-                    <GlowCard glowColor="green" className="h-full flex flex-col group overflow-hidden">
+                    <GlowCard glowColor="green" className="h-full flex flex-col group overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
                       <div className="aspect-video overflow-hidden border-b border-[#1a1a1a]">
                         <img 
                           src={project.image} 
@@ -157,6 +163,11 @@ export function Projects() {
         </motion.div>
 
       </div>
+      
+      <ProjectModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
     </section>
   );
 }
