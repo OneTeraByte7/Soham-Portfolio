@@ -77,10 +77,10 @@ export const portfolio: PortfolioData = {
   tagline: "I build systems that learn, scale, and outlast the hype.",
   bio: "Hi, I'm Soham. I focus on building resilient software architectures and exploring the frontiers of machine learning. I believe in writing code that is not just functional, but beautiful and efficient.",
   roles: ["Software Developer", "ML Developer"],
-  social: { 
-    github: "https://github.com/justforcoding13", 
-    linkedin: "https://linkedin.com/in/soham-suryawanshi", 
-    email: "mailto:justforcoding13@gmail.com" 
+  social: {
+    github: "https://github.com/OneTeraByte7",
+    linkedin: "https://www.linkedin.com/in/sohamjs1313",
+    email: "mailto:justforcoding13@gmail.com"
   },
 
   stats: {
@@ -177,7 +177,7 @@ export const portfolio: PortfolioData = {
   ],
 
   skills: {
-    languages:  [
+    languages: [
       { name: "C++", icon: "cplusplus", proficiency: 90 },
       { name: "Python", icon: "python", proficiency: 90 },
       { name: "TypeScript", icon: "typescript", proficiency: 85 }
@@ -187,12 +187,12 @@ export const portfolio: PortfolioData = {
       { name: "Node.js", icon: "nodejs", proficiency: 80 },
       { name: "Express.js", icon: "express", proficiency: 80 }
     ],
-    databases:  [
+    databases: [
       { name: "PostgreSQL", icon: "postgresql", proficiency: 80 },
       { name: "MongoDB", icon: "mongodb", proficiency: 85 },
       { name: "MySQL", icon: "mysql", proficiency: 80 }
     ],
-    tools:      [
+    tools: [
       { name: "Git", icon: "git", proficiency: 90 },
       { name: "PyTorch", icon: "pytorch", proficiency: 85 },
       { name: "TensorFlow", icon: "tensorflow", proficiency: 75 }
