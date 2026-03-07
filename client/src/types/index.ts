@@ -57,6 +57,8 @@ export interface Hackathon {
   achievement: string;
   icon: string;
   color: string;
+  tags?: string[];
+  highlights?: string[];
   gallery?: string[];
   showCertificate?: boolean;
 }

@@ -2,541 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
 @layer base {
-  html {
+  html, body {
+    @apply h-full w-full m-0 p-0 text-dim bg-black font-body;
+    background-color: #000000;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  * {
+    cursor: none; /* for custom cursor */
   }
 
   body {
-    @apply transition-colors duration-300;
-  }
-}
-
-@layer components {
-  .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20;
-  }
-
-  /* Modern Buttons */
-  .btn-primary {
-    @apply relative px-8 py-4 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300;
-    background: linear-gradient(135deg, #00a0ff 0%, #7000ff 100%);
-  }
-
-  .btn-primary:hover {
-    @apply scale-105 shadow-neon-blue;
-    filter: brightness(1.1);
-  }
-
-  .btn-secondary {
-    @apply relative px-8 py-4 rounded-xl font-semibold backdrop-blur-xl transition-all duration-300;
-    @apply bg-white/70 dark:bg-dark-elevated/70 border-2 border-cyber-blue-500;
-    @apply text-cyber-blue-600 dark:text-cyber-blue-400;
-  }
-
-  .btn-secondary:hover {
-    @apply scale-105 shadow-cyber;
-    @apply bg-cyber-blue-500 text-white border-cyber-blue-600;
-  }
-
-  /* Glass Cards */
-  .card {
-    @apply relative backdrop-blur-xl rounded-2xl p-8 transition-all duration-500;
-    @apply bg-white/70 dark:bg-dark-elevated/70;
-    @apply border border-light-border dark:border-dark-border;
-  }
-
-  .card:hover {
-    @apply scale-105 shadow-cyber-lg;
-  }
-
-  /* Glass Morphism Card */
-  .glass-card {
-    @apply relative backdrop-blur-2xl rounded-2xl p-8;
-    @apply bg-white/60 dark:bg-dark-elevated/60;
-    @apply border border-white/20 dark:border-white/10;
-    @apply shadow-cyber;
-  }
-
-  /* Skill Badge */
-  .skill-badge {
-    @apply relative px-4 py-2 rounded-xl text-sm font-medium;
-    @apply bg-gradient-to-r from-light-surface to-light-bg dark:from-dark-surface dark:to-dark-bg;
-    @apply border border-cyber-blue-200 dark:border-cyber-blue-800;
-    @apply text-gray-800 dark:text-gray-200;
-    @apply transition-all duration-300 hover:scale-105;
-  }
-
-  .skill-badge:hover {
-    @apply border-cyber-blue-500 shadow-neon-blue;
-  }
-
-  /* Gradient Text */
-  .gradient-text {
-    @apply bg-gradient-cyber bg-clip-text text-transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer utilities {
-  /* Line Clamp */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .text-shadow-glow-green {
+    text-shadow: 0 0 30px #00ff88, 0 0 60px #00ff88;
   }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .text-shadow-glow-blue {
+    text-shadow: 0 0 30px #00d4ff, 0 0 60px #00d4ff;
   }
-
-  /* Animation Delays */
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
-
-  .animation-delay-600 {
-    animation-delay: 600ms;
-  }
-
-  .animation-delay-800 {
-    animation-delay: 800ms;
-  }
-
-  .animation-delay-900 {
-    animation-delay: 900ms;
-  }
-
-  .animation-delay-2000 {
-    animation-delay: 2000ms;
-  }
-
-  .animation-delay-4000 {
-    animation-delay: 4000ms;
-  }
-
-  /* Hover Scale */
-  .hover-scale-102:hover {
-    transform: scale(1.02);
-  }
-  
-  /* Perspective */
-  .perspective-1000 {
-    perspective: 1000px;
+  .text-shadow-glow-orange {
+    text-shadow: 0 0 30px #ff8c00, 0 0 60px #ff8c00;
   }
 }
 
-/* ========================================
-   ADVANCED CUSTOM ANIMATIONS
-   ======================================== */
-
-/* Pulse Animations */
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.05);
-  }
+/* Base custom cursor setup */
+#custom-cursor-dot {
+  pointer-events: none;
+  z-index: 9999;
 }
 
-@keyframes pulse-slower {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.08) rotate(5deg);
-  }
+#custom-cursor-ring {
+  pointer-events: none;
+  z-index: 9998;
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 8s ease-in-out infinite;
-}
-
-.animate-pulse-slower {
-  animation: pulse-slower 12s ease-in-out infinite;
-}
-
-/* Float Animations */
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  33% {
-    transform: translateY(-20px) translateX(10px);
-  }
-  66% {
-    transform: translateY(-10px) translateX(-10px);
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow 15s ease-in-out infinite;
-}
-
-/* Particle Float */
-@keyframes float-particle {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(5deg);
-  }
-}
-
-@keyframes float-particle-reverse {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(15px) rotate(-5deg);
-  }
-}
-
-.animate-float-particle {
-  animation: float-particle 4s ease-in-out infinite;
-}
-
-.animate-float-particle-reverse {
-  animation: float-particle-reverse 5s ease-in-out infinite;
-}
-
-/* Very Slow Spin */
-@keyframes spin-very-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-very-slow {
-  animation: spin-very-slow 30s linear infinite;
-}
-
-/* Dash Animation for Lines */
-@keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px;
-  }
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124px;
-  }
-}
-
-.animate-dash {
-  animation: dash 3s ease-in-out infinite;
-}
-
-/* Fade In & Slide Animations */
-@keyframes smoothFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes smoothSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes gentleFloat {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-.animate-fade-in {
-  animation: smoothFadeIn 0.8s ease-out forwards;
-}
-
-.animate-slide-up {
-  animation: smoothSlideUp 0.6s ease-out forwards;
-}
-
-.animate-float {
-  animation: gentleFloat 6s ease-in-out infinite;
-}
-
-/* Clip-path Reveal */
-@keyframes clipReveal {
-  0% {
-    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    opacity: 0;
-  }
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    opacity: 1;
-  }
-}
-
-.animate-clip-reveal {
-  animation: clipReveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-}
-
-/* Stagger Fade Up Animation */
-@keyframes staggerFadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-stagger {
-  animation: staggerFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.stagger-delay-1 { animation-delay: 0.1s; }
-.stagger-delay-2 { animation-delay: 0.2s; }
-.stagger-delay-3 { animation-delay: 0.3s; }
-.stagger-delay-4 { animation-delay: 0.4s; }
-.stagger-delay-5 { animation-delay: 0.5s; }
-.stagger-delay-6 { animation-delay: 0.6s; }
-
-/* Hover Lift Effect */
-.hover-lift {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-lift:hover {
-  transform: translateY(-8px);
-}
-
-/* Drop Shadow Neon */
-.drop-shadow-neon {
-  filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.6));
-}
-
-/* ========================================
-   SCROLLBAR STYLING
-   ======================================== */
+/* Hide scrollbar for clean Apple look */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #000;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-  border-radius: 6px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
+  background: #1a1a1a;
+  border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #06b6d4, #ec4899);
-  border-radius: 6px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-
-/* Selection */
-::selection {
-  background: rgba(6, 182, 212, 0.3);
-  color: inherit;
-}
-
-.dark ::selection {
-  background: rgba(139, 92, 246, 0.3);
-  color: inherit;
-}
-
-/* Smooth Transitions */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-/* Remove transition from animated elements */
-.animate-fade-in,
-.animate-slide-in,
-.animate-slide-up,
-.animate-float,
-.animate-clip-reveal,
-.animate-pulse-slow,
-.animate-pulse-slower {
-  transition: none !important;
-}
-
-/* ========================================
-   MOBILE RESPONSIVENESS
-   ======================================== */
-@media (max-width: 768px) {
-  a, button {
-    min-height: 44px;
-    min-width: 44px;
-  }
-
-  .section-container {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-    line-height: 2.5rem;
-  }
-
-  h2 {
-    font-size: 1.75rem;
-    line-height: 2.25rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .backdrop-blur-xl,
-  .backdrop-blur-2xl {
-    backdrop-filter: blur(12px);
-  }
-}
-
-/* ========================================
-   BENTO GRID LAYOUT
-   ======================================== */
-.bento-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  grid-auto-flow: dense;
-  grid-auto-rows: 420px; /* increased base row height so cards are taller */
-}
-
-@media (min-width: 640px) {
-  .bento-grid {
-    grid-template-columns: repeat(2, 1fr); /* two columns on small+ screens */
-    gap: 1.25rem;
-    grid-auto-rows: 480px; /* taller cards on wider screens */
-  }
-}
-
-@media (min-width: 1024px) {
-  .bento-grid {
-    grid-template-columns: repeat(2, 1fr); /* keep two columns on large screens as requested */
-    gap: 1.5rem;
-    grid-auto-rows: 520px; /* largest card height for desktop */
-  }
-}
-
-.bento-item-tall {
-  grid-row: span 2;
-}
-
-.bento-item-wide {
-  grid-column: span 2;
-}
-
-.bento-item-large {
-  grid-row: span 2;
-  grid-column: span 2;
-}
-
-/* Make each project card a full-height flex column so internal layout is uniform */
-.project-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-}
-
-/* Image area: fixed proportion of the card height */
-.project-card > .relative.h-56 {
-  flex: 0 0 28%;
-  height: auto;
-}
-
-.project-card > .relative.h-56 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Content area grows and can scroll if needed */
-.project-card > .relative.p-8 {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  overflow: hidden; /* prevent internal scrolling */
-}
-
-/* Keep footer / CTA pinned to bottom of card */
-.project-card > .relative.p-8 > .flex.items-center.justify-between {
-  margin-top: auto;
-}
-
-/* Ensure description truncates but is readable */
-.project-card p.line-clamp-3 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Ensure h3 titles in project cards wrap to two lines cleanly */
-.project-card h3.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  white-space: normal;
-  line-height: 1.05;
-  margin-bottom: 0.5rem;
-}
-
-@media (max-width: 640px) {
-  .project-card h3.line-clamp-2 {
-    font-size: 1.25rem; /* slightly reduce on small screens to avoid slicing */
-    line-height: 1.1;
-  }
-}
-
-/* Grid Pattern Background */
-.bg-grid-pattern {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background: #333;
 }
