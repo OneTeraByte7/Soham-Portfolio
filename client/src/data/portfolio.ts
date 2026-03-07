@@ -76,11 +76,11 @@ export const portfolio: PortfolioData = {
   name: "Soham J Suryawanshi",
   tagline: "I build systems that learn, scale, and outlast the hype.",
   bio: "Hi, I'm Soham. I focus on building resilient software architectures and exploring the frontiers of machine learning. I believe in writing code that is not just functional, but beautiful and efficient.",
-  roles: ["Software Engineer", "ML Developer"],
+  roles: ["Software Developer", "ML Developer"],
   social: { 
-    github: "https://github.com/YourGitHub", 
-    linkedin: "https://linkedin.com/in/YourLinkedIn", 
-    email: "mailto:your.email@example.com" 
+    github: "https://github.com/justforcoding13", 
+    linkedin: "https://linkedin.com/in/soham-suryawanshi", 
+    email: "mailto:justforcoding13@gmail.com" 
   },
 
   stats: {
@@ -92,97 +92,134 @@ export const portfolio: PortfolioData = {
 
   experience: [
     {
-      company: "Tech Corp",
-      role: "Software Engineering Intern",
-      duration: "Jun 2025 — Aug 2025",
-      location: "San Francisco, CA",
-      logo: "public/logos/techcorp.png",
+      company: "Deep Learning Titans",
+      role: "AI Engineer | Research Intern",
+      duration: "Aug 2025 — Ongoing",
+      location: "Pune, IND",
+      logo: "/images/experience/dl.png",
       bullets: [
-        "Developed and maintained critical microservices.",
-        "Improved API latency by 30% through caching and query optimization.",
-        "Collaborated with cross-functional teams to deliver features on time."
+        "Improved model inference speed by 30% using state-of-the-art deep learning models.",
+        "Maintained 95% model accuracy while optimizing performance.",
+        "Automated data processing with AI workflows, reducing manual effort by 60%.",
+        "Guided strategy for 5+ AI projects by benchmarking model performance.",
+        "Boosted operational efficiency by 25% through ML model integration."
       ],
-      tech: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+      tech: ["PyTorch", "Python", "Deep Learning", "Machine Learning"],
+    },
+    {
+      company: "hackNcrafts",
+      role: "Full Stack Developer Intern",
+      duration: "June 2025 — July 2025",
+      location: "Pune, IND",
+      logo: "/images/experience/hnc.png",
+      bullets: [
+        "Delivered 3 full-stack websites for diverse clients using the MERN stack.",
+        "Led backend development for the Meetocure healthcare application.",
+        "Built a scalable RESTful API to handle over 10,000 patient data entries.",
+        "Increased user engagement by 40% with real-time WebSocket features.",
+        "Improved application performance by 50% by optimizing database queries."
+      ],
+      tech: ["MongoDB", "Express.js", "React", "Node.js"],
     }
   ],
 
   projects: [
     {
-      name: "Antigravity UI",
-      description: "A weightless Apple-inspired portfolio built with Framer Motion and React.",
-      image: "public/projects/project1.jpg",
-      tech: ["React", "Tailwind CSS", "Framer Motion"],
-      category: "WEB",
-      github: "https://github.com",
-      demo: "https://example.com",
+      name: "Autonomous multi-Agent RL Simulator",
+      description: "Developed a multi-agent RL simulation to train agents in collaborative tasks, improving completion by 70%.",
+      image: "/images/projects/project1.jpg",
+      tech: ["Python", "PyTorch", "Reinforcement Learning", "OpenAI Gym"],
+      category: "ML",
+      github: "https://github.com/justforcoding13",
       featured: true,
     },
     {
-      name: "Neural Classifier",
-      description: "Deep learning model for image recognition achieving 99% accuracy on MNIST.",
-      image: "public/projects/project2.jpg",
-      tech: ["PyTorch", "Python", "NumPy"],
+      name: "HealthCare Monitoring System for Rural Areas",
+      description: "Architected a full-stack rural healthcare platform supporting over 5,000 concurrent users with Tableau & Power BI dashboards.",
+      image: "/images/projects/project2.jpg",
+      tech: ["React", "Node.js", "MongoDB", "Express.js", "GraphQL"],
+      category: "WEB",
+      github: "https://github.com/justforcoding13",
+      featured: true,
+    },
+    {
+      name: "AI Scheduling Assistant",
+      description: "Built an agentic AI scheduler using Python, Flask, and vLLM to automate meetings via natural language.",
+      image: "/images/projects/project3.jpg",
+      tech: ["Python", "Flask", "vLLM", "Google Calendar API"],
       category: "ML",
-      github: "https://github.com",
+      github: "https://github.com/justforcoding13",
       featured: false,
     }
   ],
 
   hackathons: [
     {
-      name: "Global AI Hackathon 2025",
-      achievement: "1st Place",
-      date: "Oct 2025",
-      location: "New York, NY",
-      description: "Built an AI-powered code reviewer that caught critical security vulnerabilities in real-time.",
-      image: "public/hackathons/ai-hack.jpg",
-      teamSize: 3,
-      builtWith: ["OpenAI API", "React", "FastAPI", "Docker"],
+      name: "IEEE CodeClash International Hackathon",
+      achievement: "3rd Place Winner",
+      date: "March 2025",
+      location: "Global",
+      description: "Developed machine learning models for real-time collision detection in foggy weather. Achieved 85%+ accuracy using a dataset of over 500,000 data points.",
+      image: "/images/ieee/poster.webp",
+      teamSize: 4,
+      builtWith: ["Machine Learning", "Python", "AI"],
+    },
+    {
+      name: "NST & Blinkit Hackathon Teckron",
+      achievement: "Top 16 Finalist",
+      date: "March 2025",
+      location: "India",
+      description: "Developed a waste management automation web app for dark stores, utilizing AI to optimize waste segregation, enhancing efficiency by 60%.",
+      image: "/images/nst/certificate.png",
+      teamSize: 4,
+      builtWith: ["AI", "Machine Learning", "Web App"],
     }
   ],
 
   skills: {
     languages:  [
-      { name: "TypeScript", icon: "typescript", proficiency: 90 },
-      { name: "Python", icon: "python", proficiency: 85 },
-      { name: "C++", icon: "cplusplus", proficiency: 80 }
+      { name: "C++", icon: "cplusplus", proficiency: 90 },
+      { name: "Python", icon: "python", proficiency: 90 },
+      { name: "TypeScript", icon: "typescript", proficiency: 85 }
     ],
     frameworks: [
-      { name: "React", icon: "react", proficiency: 95 },
-      { name: "Next.js", icon: "nextjs", proficiency: 85 },
-      { name: "Node.js", icon: "nodejs", proficiency: 80 }
+      { name: "React", icon: "react", proficiency: 85 },
+      { name: "Node.js", icon: "nodejs", proficiency: 80 },
+      { name: "Express.js", icon: "express", proficiency: 80 }
     ],
     databases:  [
       { name: "PostgreSQL", icon: "postgresql", proficiency: 80 },
-      { name: "MongoDB", icon: "mongodb", proficiency: 75 }
+      { name: "MongoDB", icon: "mongodb", proficiency: 85 },
+      { name: "MySQL", icon: "mysql", proficiency: 80 }
     ],
     tools:      [
       { name: "Git", icon: "git", proficiency: 90 },
-      { name: "Docker", icon: "docker", proficiency: 75 }
+      { name: "PyTorch", icon: "pytorch", proficiency: 85 },
+      { name: "TensorFlow", icon: "tensorflow", proficiency: 75 }
     ],
   },
 
   competitive: {
-    totalSolved: 450,
+    totalSolved: 400,
     platforms: [
       {
         name: "LeetCode",
-        logo: "public/logos/leetcode.png",
-        rating: 1950,
+        logo: "/images/achieve/leetcode-logo.png",
+        rating: 1800,
         solved: 400,
-        maxRating: 2000,
-        globalRank: "Top 2%",
-        contests: 45,
+        maxRating: 1800,
+        globalRank: "Top",
+        contests: 30,
         color: "orange",
       },
       {
         name: "Codeforces",
-        logo: "public/logos/codeforces.png",
-        rating: 1450,
-        solved: 50,
-        maxRating: 1500,
+        logo: "/images/achieve/codeforces-logo.png",
+        rating: 1400,
+        solved: 100,
+        maxRating: 1400,
         globalRank: "Specialist",
-        contests: 20,
+        contests: 15,
         color: "blue",
       }
     ]
@@ -190,11 +227,18 @@ export const portfolio: PortfolioData = {
 
   extras: [
     {
-      name: "Tech Meetup Speaker",
-      role: "Speaker",
+      name: "Global Ambassador",
+      role: "Ambassador",
       year: "2024",
-      description: "Presented a talk on building scalable frontend architectures to an audience of 100+ developers.",
-      photo: "public/extra/speaker.jpg",
+      description: "Stanford's Code in Place",
+      photo: "/images/profile/profile.jpg",
+    },
+    {
+      name: "Prayaas Youth Foundation",
+      role: "Volunteer",
+      year: "2023",
+      description: "Volunteered in Prayaas Youth Foundation",
+      photo: "/images/profile/profile.jpg",
     }
   ],
 };

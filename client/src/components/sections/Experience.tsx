@@ -3,10 +3,14 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { portfolio } from '../../data/portfolio';
 import { SectionLabel } from '../ui/SectionLabel';
 import { GlowCard } from '../ui/GlowCard';
+import { useState } from 'react';
+import { ExperienceModal } from '../ui/ExperienceModal';
 
 export function Experience() {
   const containerRef = useRef<HTMLDivElement>(null);
   
+  const [selectedExperience, setSelectedExperience] = useState<any>(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
@@ -39,17 +43,22 @@ export function Experience() {
             {portfolio.experience.map((exp, index) => {
                const isLeft = index % 2 === 0;
                return (
-                 <ExperienceItem key={index} experience={exp} isLeft={isLeft} index={index} />
+                 <ExperienceItem key={index} experience={exp} isLeft={isLeft} index={index} onClick={() => setSelectedExperience(exp)} />
                );
             })}
           </div>
         </div>
       </div>
+
+      <ExperienceModal 
+        experience={selectedExperience} 
+        onClose={() => setSelectedExperience(null)} 
+      />
     </section>
   );
 }
 
-function ExperienceItem({ experience, isLeft, index }: { experience: any, isLeft: boolean, index: number }) {
+function ExperienceItem({ experience, isLeft, index, onClick }: { experience: any, isLeft: boolean, index: number, onClick: () => void }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-150px" });
 
@@ -74,9 +83,10 @@ function ExperienceItem({ experience, isLeft, index }: { experience: any, isLeft
         initial={{ opacity: 0, x: isLeft ? -60 : 60, y: 30 }}
         animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
         transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className={`w-full md:w-[calc(50%-3rem)]`}
+        className={`w-full md:w-[calc(50%-3rem)] cursor-pointer group`}
+        onClick={onClick}
       >
-        <GlowCard className="p-8">
+        <GlowCard className="p-8 transition-transform duration-300 group-hover:scale-[1.02]">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-full bg-[#111] overflow-hidden flex items-center justify-center border border-white/10 shrink-0">

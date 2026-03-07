@@ -40,7 +40,7 @@ export function Hero() {
           >
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border border-white/10 animate-float shadow-2xl relative bg-surface">
               <img 
-                src="photo.jpg" 
+                src="/images/profile/profile.jpg" 
                 alt={portfolio.name} 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={(e) => {
