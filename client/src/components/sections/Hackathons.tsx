@@ -12,7 +12,7 @@ export function Hackathons() {
   const [selectedHackathon, setSelectedHackathon] = useState<any>(null);
 
   const total = portfolio.stats.hackathons;
-  const wins = portfolio.hackathons.filter(h => h.achievement.includes("1st")).length;
+  const wins = 4;
 
   return (
     <>
@@ -30,6 +30,7 @@ export function Hackathons() {
               {total} Hackathons. {wins} Wins. <span className="text-muted">0 Regrets.</span>
             </motion.h2>
           </div>
+
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {portfolio.hackathons.map((hackathon, index) => (
@@ -140,6 +141,23 @@ function HackathonCard({ hackathon, index, onClick }: { hackathon: any, index: n
 
 function HackathonModal({ hackathon, onClose }: { hackathon: any, onClose: () => void }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Prevent body scroll when modal is open
+  React.useEffect(() => {
+    if (hackathon) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      
+      return () => {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [hackathon]);
 
   if (!hackathon) return null;
 
