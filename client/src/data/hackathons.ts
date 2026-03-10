@@ -6,18 +6,18 @@ export const hackathons: Hackathon[] = [
     name: 'Smart India Hackathon Grand Finale 2025',
     position: 'Top 5 Finalist',
     date: 'December 2025',
-    description: 'Led team to Top 5 nationally at SIH 2025 Grand Finale for Bharat Electronics Limited PS SIH25164 (130+ teams). Built AI/ML drone swarm algorithms achieving 95%+ asset protection with decentralized control. Developed Backend & ML models for autonomous counter-drone system in 36-hour hackathon. Implemented real-time Control system with 100+ Hz processing for threat prioritization.',
+    description: 'Developed cooperative reinforcement framework coordinating 20+ aerial units, reaching 95% defense effectiveness. Analyzed 120Hz sensor streams through autonomous prioritization logic, finishing fifth nationwide among 500 teams at the Grand Finale in Bangalore & Pune.',
     project: 'Robotics, Drones & Machine Learning',
-    achievement: 'Top 5 among 130+ teams nationally',
+    achievement: 'Top 5 among 500+ teams nationally',
     icon: '/images/sih/certificate.jpg',
     color: 'cyber-purple',
-    tags: ['AI/ML', 'Robotics', 'Drone Swarm', 'Real-time Systems', 'Backend Development'],
+    tags: ['AI/ML', 'Robotics', 'Drone Swarm', 'Reinforcement Learning', 'Real-time Systems', 'Autonomous Systems'],
     highlights: [
-      'Led team to Top 5 nationally among 130+ teams',
-      '95%+ asset protection rate achieved',
-      'Decentralized drone swarm control system',
-      '100+ Hz real-time processing',
-      '36-hour intensive development sprint'
+      'Fifth place nationally among 500+ teams',
+      '95% defense effectiveness achieved',
+      'Coordinated 20+ aerial units cooperatively',
+      '120Hz real-time sensor stream analysis',
+      'Autonomous prioritization logic system'
     ],
     gallery: [
       '/images/sih/certificate.jpg',
