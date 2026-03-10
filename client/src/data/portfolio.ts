@@ -155,6 +155,16 @@ export const portfolio: PortfolioData = {
 
   hackathons: [
     {
+      name: "Smart India Hackathon Grand Finale 2025",
+      achievement: "Top 5 Finalist",
+      date: "December 2025",
+      location: "Bangalore & Pune",
+      description: "Developed cooperative reinforcement framework coordinating 20+ aerial units, reaching 95% defense effectiveness. Analyzed 120Hz sensor streams through autonomous prioritization logic, finishing fifth nationwide among 500 teams.",
+      image: "/images/sih/certificate.jpg",
+      teamSize: 6,
+      builtWith: ["Robotics", "Drones", "Machine Learning", "Reinforcement Learning", "Real-time Systems"],
+    },
+    {
       name: "IEEE CodeClash International Hackathon",
       achievement: "3rd Place Winner",
       date: "March 2025",
@@ -231,14 +241,14 @@ export const portfolio: PortfolioData = {
       role: "Ambassador",
       year: "2024",
       description: "Stanford's Code in Place",
-      photo: "/images/profile/profile.jpg",
+      photo: "/images/extra/cip.png",
     },
     {
       name: "Prayaas Youth Foundation",
       role: "Volunteer",
       year: "2023",
       description: "Volunteered in Prayaas Youth Foundation",
-      photo: "/images/profile/profile.jpg",
+      photo: "/images/extra/pyf.png",
     }
   ],
 };
