@@ -53,5 +53,33 @@ export const hackathons: Hackathon[] = [
     gallery: [
       '/images/nst/certificate.png'
     ]
+  },
+  {
+    id: 'rift-2026',
+    name: 'RIFT 2026 Hackathon',
+    position: 'Semifinalist',
+    date: 'March 2026',
+    description: 'Developed an Autonomous CI/CD Healing Agent that autonomously detects, fixes, and commits pipeline failures. Built a full-stack multi-agent system using React, Gemini AI, and DevOps automation. Selected as one of 10 semifinalists from 200 teams across 5 problem statements (2 teams per statement).',
+    project: '🤖 Autonomous CI/CD Healing Agent',
+    achievement: 'Top 10 Semifinalist among 200 teams',
+    icon: '/images/hackathons/rift.jpg',
+    color: 'cyber-purple',
+    tags: ['AI/ML', 'DevOps Automation', 'Agentic Systems', 'React', 'Gemini AI', 'CI/CD', 'Full-Stack'],
+    highlights: [
+      'Top 10 semifinalist from 200 competing teams',
+      '2 teams selected per problem statement (5 tracks)',
+      'Autonomous pipeline debugging in under 5 minutes',
+      'Multi-agent system with AI-powered code fixes',
+      'Real-time dashboard with live CI/CD monitoring',
+      'Automatic repository scanning and test discovery',
+      'Smart retry logic with up to 5 attempts'
+    ],
+    gallery: [
+      '/images/hackathons/rift.jpg'
+    ],
+    links: {
+      demo: 'https://rift-2026-kappa.vercel.app',
+      github: 'https://github.com/OneTeraByte7/RIFT_2026.git'
+    }
   }
 ];

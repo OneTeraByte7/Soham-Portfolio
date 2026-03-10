@@ -85,7 +85,7 @@ export const portfolio: PortfolioData = {
 
   stats: {
     projects: 15,
-    hackathons: 8,
+    hackathons: 13,
     leetcode: 400,
     internships: 3,
   },
@@ -183,6 +183,16 @@ export const portfolio: PortfolioData = {
       image: "/images/nst/certificate.png",
       teamSize: 4,
       builtWith: ["AI", "Machine Learning", "Web App"],
+    },
+    {
+      name: "RIFT 2026 Hackathon",
+      achievement: "Semifinalist",
+      date: "March 2026",
+      location: "India",
+      description: "Developed an Autonomous CI/CD Healing Agent that autonomously detects, fixes, and commits pipeline failures. Built a full-stack multi-agent system using React, Gemini AI, and DevOps automation. Selected as one of 10 semifinalists from 200 teams across 5 problem statements (2 teams per statement).",
+      image: "/images/hackathons/rift.jpg",
+      teamSize: 4,
+      builtWith: ["AI/ML", "DevOps Automation", "React", "Gemini AI", "CI/CD", "Full-Stack"],
     }
   ],
 

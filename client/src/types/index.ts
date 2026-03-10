@@ -61,4 +61,9 @@ export interface Hackathon {
   highlights?: string[];
   gallery?: string[];
   showCertificate?: boolean;
+  links?: {
+    demo?: string;
+    github?: string;
+    linkedin?: string;
+  };
 }
