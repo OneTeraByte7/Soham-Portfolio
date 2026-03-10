@@ -1,43 +1,61 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { portfolio } from '../../data/portfolio';
+import { hackathons as detailedHackathons } from '../../data/hackathons';
 import { SectionLabel } from '../ui/SectionLabel';
 import { GlowCard } from '../ui/GlowCard';
+import { X, Calendar, Trophy, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export function Hackathons() {
   const statRef = useRef(null);
   const isInView = useInView(statRef, { once: true, margin: "-100px" });
+  const [selectedHackathon, setSelectedHackathon] = useState<any>(null);
 
   const total = portfolio.stats.hackathons;
   const wins = portfolio.hackathons.filter(h => h.achievement.includes("1st")).length;
 
   return (
-    <section id="hackathons" className="py-32 relative min-h-screen">
-      <div className="max-w-[1200px] mx-auto px-8">
-        <SectionLabel label="// 04" title="Hackathons" />
+    <>
+      <section id="hackathons" className="py-32 relative min-h-screen">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <SectionLabel label="// 04" title="Hackathons" />
 
-        <div className="mb-24" ref={statRef}>
-          <motion.h2 
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-5xl font-thin text-white leading-tight"
-          >
-            {total} Hackathons. {wins} Wins. <span className="text-muted">0 Regrets.</span>
-          </motion.h2>
-        </div>
+          <div className="mb-24" ref={statRef}>
+            <motion.h2 
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl sm:text-5xl font-thin text-white leading-tight"
+            >
+              {total} Hackathons. {wins} Wins. <span className="text-muted">0 Regrets.</span>
+            </motion.h2>
+          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {portfolio.hackathons.map((hackathon, index) => (
-            <HackathonCard key={index} hackathon={hackathon} index={index} />
-          ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {portfolio.hackathons.map((hackathon, index) => (
+              <HackathonCard 
+                key={index} 
+                hackathon={hackathon} 
+                index={index} 
+                onClick={() => {
+                  const detailed = detailedHackathons.find(h => h.name === hackathon.name);
+                  setSelectedHackathon(detailed || hackathon);
+                }}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <HackathonModal 
+        hackathon={selectedHackathon} 
+        onClose={() => setSelectedHackathon(null)} 
+      />
+    </>
   );
 }
 
-function HackathonCard({ hackathon, index }: { hackathon: any, index: number }) {
+function HackathonCard({ hackathon, index, onClick }: { hackathon: any, index: number, onClick: () => void }) {
   const isWinner = hackathon.achievement.toLowerCase().includes('1st');
 
   return (
@@ -46,8 +64,10 @@ function HackathonCard({ hackathon, index }: { hackathon: any, index: number }) 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
+      onClick={onClick}
+      className="cursor-pointer"
     >
-      <GlowCard hover={false} className="overflow-hidden group flex flex-col h-full border-none">
+      <GlowCard hover={true} className="overflow-hidden group flex flex-col h-full border-none transition-all duration-300 hover:scale-[1.02]">
         
         {/* Header Image */}
         <div className="relative aspect-[16/9] overflow-hidden w-full">
@@ -100,6 +120,11 @@ function HackathonCard({ hackathon, index }: { hackathon: any, index: number }) 
             ))}
           </div>
 
+          {/* Click to view details indicator */}
+          <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="font-mono text-xs text-blue">Click for details →</span>
+          </div>
+
           {/* Winner subtle gold particles wrapper would go here */}
           {isWinner && (
             <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000 overflow-hidden rounded-b-2xl">
@@ -110,5 +135,149 @@ function HackathonCard({ hackathon, index }: { hackathon: any, index: number }) 
 
       </GlowCard>
     </motion.div>
+  );
+}
+
+function HackathonModal({ hackathon, onClose }: { hackathon: any, onClose: () => void }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  if (!hackathon) return null;
+
+  const images = hackathon.gallery || [hackathon.icon];
+  const hasMultipleImages = images.length > 1;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+      >
+        <motion.div
+          initial={{ scale: 0.9, y: 20 }}
+          animate={{ scale: 1, y: 0 }}
+          exit={{ scale: 0.9, y: 20 }}
+          onClick={(e) => e.stopPropagation()}
+          className="bg-[#0d0d0d] border border-white/10 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto relative"
+        >
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
+          >
+            <X className="w-6 h-6 text-white" />
+          </button>
+
+          {/* Header */}
+          <div className="p-8 border-b border-white/10">
+            <div className="flex items-start gap-4 mb-4">
+              <Trophy className="w-8 h-8 text-orange flex-shrink-0 mt-1" />
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold text-white mb-2">{hackathon.name}</h2>
+                <div className="flex flex-wrap items-center gap-3 text-sm">
+                  <span className="px-3 py-1 bg-orange/20 text-orange rounded-full font-semibold">
+                    {hackathon.position || hackathon.achievement}
+                  </span>
+                  <span className="flex items-center gap-1 text-muted">
+                    <Calendar className="w-4 h-4" />
+                    {hackathon.date}
+                  </span>
+                  {hackathon.project && (
+                    <span className="text-dim">• {hackathon.project}</span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="p-8 space-y-8">
+            {/* Description */}
+            <div>
+              <h3 className="text-xl font-bold text-white mb-3">About the Project</h3>
+              <p className="text-dim leading-relaxed">{hackathon.description}</p>
+            </div>
+
+            {/* Highlights */}
+            {hackathon.highlights && hackathon.highlights.length > 0 && (
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Key Highlights</h3>
+                <ul className="space-y-2">
+                  {hackathon.highlights.map((highlight: string, idx: number) => (
+                    <li key={idx} className="flex items-start gap-3 text-dim">
+                      <span className="text-orange mt-1">▸</span>
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Tags */}
+            {hackathon.tags && hackathon.tags.length > 0 && (
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Technologies & Domains</h3>
+                <div className="flex flex-wrap gap-2">
+                  {hackathon.tags.map((tag: string, idx: number) => (
+                    <span key={idx} className="px-3 py-1 bg-blue/10 border border-blue/20 text-blue rounded-md text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Gallery */}
+            {images.length > 0 && (
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Certificates & Photos</h3>
+                <div className="relative">
+                  <div className="aspect-video rounded-lg overflow-hidden bg-black border border-white/10">
+                    <img
+                      src={images[currentImageIndex]}
+                      alt={`Gallery ${currentImageIndex + 1}`}
+                      className="w-full h-full object-contain"
+                      onError={(e) => {
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80';
+                      }}
+                    />
+                  </div>
+                  
+                  {hasMultipleImages && (
+                    <>
+                      <button
+                        onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/70 hover:bg-black/90 rounded-full transition-colors"
+                      >
+                        <ChevronLeft className="w-6 h-6 text-white" />
+                      </button>
+                      <button
+                        onClick={() => setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/70 hover:bg-black/90 rounded-full transition-colors"
+                      >
+                        <ChevronRight className="w-6 h-6 text-white" />
+                      </button>
+                      <div className="flex justify-center gap-2 mt-4">
+                        {images.map((_: any, idx: number) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentImageIndex(idx)}
+                            className={`w-2 h-2 rounded-full transition-all ${
+                              idx === currentImageIndex ? 'bg-orange w-8' : 'bg-white/30'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
