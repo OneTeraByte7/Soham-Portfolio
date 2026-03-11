@@ -55,9 +55,8 @@ export interface PortfolioData {
     platforms: {
       name: string;
       logo: string;
-      rating: number;
+      rating?: number;
       solved: number;
-      maxRating: number;
       globalRank: string;
       contests: number;
       color: 'orange' | 'blue' | 'green' | string;
@@ -76,7 +75,7 @@ export const portfolio: PortfolioData = {
   name: "Soham J Suryawanshi",
   tagline: "I build systems that learn, scale, and outlast the hype.",
   bio: "Hi, I'm Soham. I focus on building resilient software architectures and exploring the frontiers of machine learning. I believe in writing code that is not just functional, but beautiful and efficient.",
-  roles: ["Software Developer", "ML Developer"],
+  roles: ["Software Developer Engineer", "Machine Learning Engineer"],
   social: {
     github: "https://github.com/OneTeraByte7",
     linkedin: "https://www.linkedin.com/in/sohamjs1313",
@@ -130,7 +129,7 @@ export const portfolio: PortfolioData = {
       image: "/images/projects/project1.jpg",
       tech: ["Python", "PyTorch", "Reinforcement Learning", "OpenAI Gym"],
       category: "ML",
-      github: "https://github.com/justforcoding13",
+      github: "https://github.com/OneTeraByte7/AI-for-Delivery.git",
       featured: true,
     },
     {
@@ -140,6 +139,7 @@ export const portfolio: PortfolioData = {
       tech: ["React", "Node.js", "MongoDB", "Express.js", "GraphQL"],
       category: "WEB",
       github: "https://github.com/justforcoding13",
+      demo: "https://meet-o-cure.vercel.app/",
       featured: true,
     },
     {
@@ -148,8 +148,36 @@ export const portfolio: PortfolioData = {
       image: "/images/projects/project3.jpg",
       tech: ["Python", "Flask", "vLLM", "Google Calendar API"],
       category: "ML",
-      github: "https://github.com/justforcoding13",
-      featured: false,
+      github: "https://github.com/OneTeraByte7/AMD-MI300-GPU-HACKATHON_2025.git",
+      featured: true,
+    },
+    {
+      name: "MLOps Churn Prediction Pipeline",
+      description: "A production-ready, end-to-end MLOps pipeline for customer churn prediction. Features automated training, MLflow tracking, FastAPI serving, and CI/CD.",
+      image: "/images/projects/mlops.png",
+      tech: ["Python", "MLflow", "FastAPI", "GitHub Actions"],
+      category: "ML",
+      github: "https://github.com/OneTeraByte7/MLOps.git",
+      featured: true,
+    },
+    {
+      name: "Collision Detection AI - CodeClash2025",
+      description: "An AI-powered system detecting real-world vehicle accident risques using custom machine learning models and live video processing.",
+      image: "/images/projects/collision.jpg",
+      tech: ["Python", "Machine Learning", "Scikit-Learn", "OpenCV"],
+      category: "ML",
+      github: "https://github.com/OneTeraByte7/CodeClash2025-Pinaka_programmers.git",
+      featured: true,
+    },
+    {
+      name: "Autonomous CI/CD Healing Agent",
+      description: "A full-stack multi-agent system that autonomously discovers, fixes, and commits CI/CD pipeline failures using Gemini AI within 5 minutes.",
+      image: "/images/projects/rift.png",
+      tech: ["React", "Gemini AI", "Python", "DevOps"],
+      category: "TOOLS",
+      github: "https://github.com/OneTeraByte7/RIFT_2026.git",
+      demo: "https://rift-2026-kappa.vercel.app/",
+      featured: true,
     }
   ],
 
@@ -225,21 +253,19 @@ export const portfolio: PortfolioData = {
       {
         name: "LeetCode",
         logo: "/images/achieve/leetcode-logo.png",
-        rating: 1800,
-        solved: 400,
-        maxRating: 1800,
-        globalRank: "Top",
-        contests: 30,
+        solved: 776,
+        rating: 623,
+        globalRank: "62,407",
+        contests: 2,
         color: "orange",
       },
       {
         name: "Codeforces",
         logo: "/images/achieve/codeforces-logo.png",
-        rating: 1400,
-        solved: 100,
-        maxRating: 1400,
-        globalRank: "Specialist",
-        contests: 15,
+        solved: 20,
+        globalRank: "Newbie",
+        rating: 871,
+        contests: 3,
         color: "blue",
       }
     ]
