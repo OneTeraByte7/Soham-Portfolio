@@ -11,7 +11,7 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const filters = ['ALL', 'WEB', 'ML', 'TOOLS', 'SYSTEMS'];
 
-  const filteredProjects = portfolio.projects.filter(p => 
+  const filteredProjects = portfolio.projects.filter(p =>
     filter === 'ALL' || p.category === filter
   );
 
@@ -29,13 +29,12 @@ export function Projects() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`font-mono text-xs tracking-widest uppercase pb-1 transition-colors relative ${
-                filter === f ? 'text-green' : 'text-muted hover:text-white'
-              }`}
+              className={`font-mono text-xs tracking-widest uppercase pb-1 transition-colors relative ${filter === f ? 'text-green' : 'text-muted hover:text-white'
+                }`}
             >
               {f}
               {filter === f && (
-                <motion.div 
+                <motion.div
                   layoutId="activeFilter"
                   className="absolute bottom-0 left-0 right-0 h-px bg-green"
                 />
@@ -61,9 +60,9 @@ export function Projects() {
                 <GlowCard glowColor="blue" className="group overflow-hidden">
                   <div className="flex flex-col lg:flex-row min-h-[400px]">
                     <div className="w-full lg:w-3/5 overflow-hidden">
-                      <img 
-                        src={project.image} 
-                        alt={project.name} 
+                      <img
+                        src={project.image}
+                        alt={project.name}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
@@ -75,7 +74,7 @@ export function Projects() {
                     <div className="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center bg-[radial-gradient(ellipse_at_right,rgba(0,212,255,0.05),transparent)]">
                       <h3 className="text-3xl font-thin text-white mb-4">{project.name}</h3>
                       <p className="text-dim text-sm leading-relaxed mb-8 hidden md:block">{project.description}</p>
-                      
+
                       <div className="flex flex-wrap gap-2 mb-8">
                         {project.tech.map(t => (
                           <span key={t} className="font-mono text-xs text-orange bg-orange/5 border border-orange/10 px-2 py-1 rounded">
@@ -113,45 +112,47 @@ export function Projects() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.5, delay: i * 0.05 }}
-                    className="cursor-pointer"
+                    className="cursor-pointer h-full flex flex-col"
                     onClick={() => setSelectedProject(project)}
                   >
-                    <GlowCard glowColor="green" className="h-full flex flex-col group overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
-                      <div className="aspect-video overflow-hidden border-b border-[#1a1a1a]">
-                        <img 
-                          src={project.image} 
-                          alt={project.name} 
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                            e.currentTarget.parentElement!.classList.add('bg-[#111]', 'flex', 'items-center', 'justify-center');
-                            e.currentTarget.parentElement!.innerHTML = `<span class="font-mono text-xl text-dim">${project.name}</span>`;
-                          }}
-                        />
-                      </div>
-                      <div className="p-6 flex-1 flex flex-col">
-                        <h3 className="font-mono text-blue font-semibold mb-3">{project.name}</h3>
-                        <p className="text-dim text-sm leading-relaxed mb-6 flex-1">{project.description}</p>
-                        
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {project.tech.slice(0, 3).map(t => (
-                            <span key={t} className="font-mono text-[10px] text-orange border border-orange/20 px-2 py-0.5 rounded-full">
-                              {t}
-                            </span>
-                          ))}
+                    <GlowCard glowColor="green" className="h-full group overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
+                      <div className="flex flex-col h-full">
+                        <div className="aspect-video overflow-hidden border-b border-[#1a1a1a] shrink-0">
+                          <img
+                            src={project.image}
+                            alt={project.name}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                              e.currentTarget.parentElement!.classList.add('bg-[#111]', 'flex', 'items-center', 'justify-center');
+                              e.currentTarget.parentElement!.innerHTML = `<span class="font-mono text-xl text-dim text-center px-4">${project.name}</span>`;
+                            }}
+                          />
                         </div>
+                        <div className="p-6 flex-1 flex flex-col">
+                          <h3 className="font-mono text-blue font-semibold mb-3 line-clamp-1" title={project.name}>{project.name}</h3>
+                          <p className="text-dim text-sm leading-relaxed mb-6 flex-1 line-clamp-3" title={project.description}>{project.description}</p>
 
-                        <div className="flex items-center gap-4 mt-auto pt-4 border-t border-[#1a1a1a]">
-                          {project.github && (
-                            <a href={project.github} target="_blank" rel="noreferrer" className="text-muted hover:text-green transition-colors">
-                              <Github className="w-4 h-4" />
-                            </a>
-                          )}
-                          {project.demo && (
-                            <a href={project.demo} target="_blank" rel="noreferrer" className="text-muted hover:text-green transition-colors">
-                              <ExternalLink className="w-4 h-4" />
-                            </a>
-                          )}
+                          <div className="flex flex-wrap gap-2 mb-6 min-h-[24px]">
+                            {project.tech.slice(0, 3).map(t => (
+                              <span key={t} className="font-mono text-[10px] text-orange border border-orange/20 px-2 py-0.5 rounded-full whitespace-nowrap">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="flex items-center gap-4 mt-auto pt-4 border-t border-[#1a1a1a]">
+                            {project.github && (
+                              <a href={project.github} target="_blank" rel="noreferrer" className="text-muted hover:text-green transition-colors">
+                                <Github className="w-4 h-4" />
+                              </a>
+                            )}
+                            {project.demo && (
+                              <a href={project.demo} target="_blank" rel="noreferrer" className="text-muted hover:text-green transition-colors">
+                                <ExternalLink className="w-4 h-4" />
+                              </a>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </GlowCard>
@@ -163,10 +164,10 @@ export function Projects() {
         </motion.div>
 
       </div>
-      
-      <ProjectModal 
-        project={selectedProject} 
-        onClose={() => setSelectedProject(null)} 
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
       />
     </section>
   );
