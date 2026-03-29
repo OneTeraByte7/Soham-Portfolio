@@ -266,22 +266,8 @@ function HackathonCard({ hackathon, index, onClick }: { hackathon: any, index: n
 function HackathonModal({ hackathon, onClose }: { hackathon: any, onClose: () => void }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Prevent body scroll when modal is open
-  React.useEffect(() => {
-    if (hackathon) {
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      
-      return () => {
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, scrollY);
-      };
-    }
-  }, [hackathon]);
+  // Use custom scroll lock hook
+  useModalScrollLock(!!hackathon);
 
   if (!hackathon) return null;
 
