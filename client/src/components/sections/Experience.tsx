@@ -6,6 +6,44 @@ import { GlowCard } from '../ui/GlowCard';
 import { useState } from 'react';
 import { ExperienceModal } from '../ui/ExperienceModal';
 
+/**
+ * Experience timeline configuration
+ */
+const EXPERIENCE_CONFIG = {
+  TIMELINE_MARGIN: "-100px",
+  DOT_SIZE: 8,
+  DOT_GLOW_SIZE: 12,
+  ITEM_GAP_DESKTOP: 24,
+  ITEM_GAP_MOBILE: 12,
+  ANIMATION_DURATION: 0.6,
+  ANIMATION_DELAY: 0.1,
+} as const;
+
+/**
+ * Logger for experience interactions
+ */
+const experienceLogger = {
+  logExperienceSelect: (company: string, position: string) => {
+    console.debug(`[Experience] Selected: ${company} - ${position}`);
+  },
+  logModalOpen: (company: string) => {
+    console.debug(`[Experience] Modal opened for: ${company}`);
+  },
+  logModalClose: () => {
+    console.debug(`[Experience] Modal closed`);
+  },
+  logComponentMount: (count: number) => {
+    console.debug(`[Experience] Component mounted with ${count} experiences`);
+  },
+};
+
+/**
+ * Alternate timeline positioning handler
+ */
+function isTimelineLeft(index: number): boolean {
+  return index % 2 === 0;
+}
+
 export function Experience() {
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -17,6 +55,10 @@ export function Experience() {
   });
 
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  React.useEffect(() => {
+    experienceLogger.logComponentMount(portfolio.experience.length);
+  }, []);
 
   return (
     <section id="experience" className="py-32 relative min-h-screen">
@@ -41,9 +83,19 @@ export function Experience() {
 
           <div className="flex flex-col gap-12 lg:gap-24">
             {portfolio.experience.map((exp, index) => {
-               const isLeft = index % 2 === 0;
+               const isLeft = isTimelineLeft(index);
                return (
-                 <ExperienceItem key={index} experience={exp} isLeft={isLeft} index={index} onClick={() => setSelectedExperience(exp)} />
+                 <ExperienceItem 
+                   key={index} 
+                   experience={exp} 
+                   isLeft={isLeft} 
+                   index={index} 
+                   onClick={() => {
+                     experienceLogger.logExperienceSelect(exp.company, exp.role);
+                     experienceLogger.logModalOpen(exp.company);
+                     setSelectedExperience(exp);
+                   }} 
+                 />
                );
             })}
           </div>
@@ -52,7 +104,10 @@ export function Experience() {
 
       <ExperienceModal 
         experience={selectedExperience} 
-        onClose={() => setSelectedExperience(null)} 
+        onClose={() => {
+          experienceLogger.logModalClose();
+          setSelectedExperience(null);
+        }} 
       />
     </section>
   );
