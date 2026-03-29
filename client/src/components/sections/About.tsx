@@ -115,6 +115,14 @@ export function About() {
                 </GlowCard>
               </motion.div>
             ))}
+
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: ABOUT_ANIMATIONS.INVIEW_MARGIN }}
+              transition={{ duration: ABOUT_ANIMATIONS.CONTENT_DURATION, delay: ABOUT_ANIMATIONS.STAT_DELAYS[2] }}
+            >
+              <GlowCard glowColor="orange" className="h-full flex items-center justify-center p-8">
                 <CounterStat value={portfolio.stats.leetcode} label="LeetCode" />
               </GlowCard>
             </motion.div>
@@ -122,8 +130,8 @@ export function About() {
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true, margin: ABOUT_ANIMATIONS.INVIEW_MARGIN }}
+              transition={{ duration: ABOUT_ANIMATIONS.CONTENT_DURATION, delay: ABOUT_ANIMATIONS.STAT_DELAYS[3] }}
             >
               <GlowCard glowColor="green" className="h-full flex items-center justify-center p-8">
                 <CounterStat value={portfolio.stats.internships} label="Internships" />
