@@ -6,13 +6,132 @@ import { SectionLabel } from '../ui/SectionLabel';
 import { GlowCard } from '../ui/GlowCard';
 import { X, Calendar, Trophy, ChevronLeft, ChevronRight } from 'lucide-react';
 
+/**
+ * Utility function to determine if a hackathon is a winning achievement
+ * @param achievement - The achievement string from the hackathon data
+ * @returns Boolean indicating if the hackathon was won (1st place)
+ */
+function isWinnerAchievement(achievement: string): boolean {
+  return achievement.toLowerCase().includes('1st');
+}
+
+/**
+ * Utility function to format hackathon metadata
+ * @param date - The date string of the hackathon
+ * @param location - The location of the hackathon
+ * @returns Formatted metadata string
+ */
+function formatHackathonMeta(date: string, location: string): string {
+  return `${date} • ${location}`;
+}
+
+/**
+ * Configuration constants for hackathons component
+ */
+const HACKATHON_CONFIG = {
+  ANIMATION_DELAY: 0.1,
+  SCALE_HOVER: 1.02,
+  IMAGE_SCALE_ZOOM: 1.05,
+  ANIMATION_DURATION: 0.8,
+  INTRO_DURATION: 1,
+  PARTICLE_OPACITY: 0.1,
+} as const;
+
+/**
+ * Logger utility for component events
+ */
+const logger = {
+  logHackathonSelect: (name: string, achievement: string) => {
+    console.debug(`[Hackathons] Selected: ${name} - ${achievement}`);
+  },
+  logModalOpen: (name: string) => {
+    console.debug(`[Hackathons] Modal opened for: ${name}`);
+  },
+  logModalClose: () => {
+    console.debug(`[Hackathons] Modal closed`);
+  },
+  logImageError: (hackathonName: string, imageSrc: string) => {
+    console.warn(`[Hackathons] Image failed to load for ${hackathonName}: ${imageSrc}`);
+  },
+};
+
+/**
+ * Utility to safely find a detailed hackathon by name
+ */
+function findDetailedHackathon(hackathonName: string) {
+  try {
+    return detailedHackathons.find(h => h.name === hackathonName) || null;
+  } catch (error) {
+    console.error('[Hackathons] Error finding detailed hackathon:', error);
+    return null;
+  }
+}
+
+/**
+ * Utility to calculate hackathon statistics
+ */
+function calculateHackathonStats(hackathons: any[]) {
+  try {
+    const total = hackathons.length;
+    const wins = hackathons.filter(h => isWinnerAchievement(h.achievement)).length;
+    return { total, wins, winRate: (wins / total * 100).toFixed(1) };
+  } catch (error) {
+    console.error('[Hackathons] Error calculating stats:', error);
+    return { total: 0, wins: 0, winRate: '0.0' };
+  }
+}
+
+/**
+ * Custom hook to manage modal scroll lock
+ */
+function useModalScrollLock(isOpen: boolean) {
+  React.useEffect(() => {
+    if (isOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      
+      return () => {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isOpen]);
+}
+
+/**
+ * Type definitions for Hackathon data structure
+ */
+interface HackathonData {
+  name: string;
+  image: string;
+  date: string;
+  location: string;
+  teamSize: number;
+  achievement: string;
+  description: string;
+  builtWith: string[];
+  gallery?: string[];
+  highlights?: string[];
+  tags?: string[];
+}
+
 export function Hackathons() {
   const statRef = useRef(null);
   const isInView = useInView(statRef, { once: true, margin: "-100px" });
   const [selectedHackathon, setSelectedHackathon] = useState<any>(null);
 
-  const total = portfolio.stats.hackathons;
-  const wins = 4;
+  const stats = calculateHackathonStats(portfolio.hackathons);
+  const total = stats.total;
+  const wins = stats.wins;
+  
+  // Component lifecycle logging
+  React.useEffect(() => {
+    logger.logHackathonSelect('HackathonsSection', `Mounted with ${total} hackathons`);
+  }, [total]);
 
   return (
     <>
@@ -39,7 +158,9 @@ export function Hackathons() {
                 hackathon={hackathon} 
                 index={index} 
                 onClick={() => {
-                  const detailed = detailedHackathons.find(h => h.name === hackathon.name);
+                  const detailed = findDetailedHackathon(hackathon.name);
+                  logger.logHackathonSelect(hackathon.name, hackathon.achievement);
+                  logger.logModalOpen(hackathon.name);
                   setSelectedHackathon(detailed || hackathon);
                 }}
               />
@@ -50,21 +171,24 @@ export function Hackathons() {
 
       <HackathonModal 
         hackathon={selectedHackathon} 
-        onClose={() => setSelectedHackathon(null)} 
+        onClose={() => {
+          logger.logModalClose();
+          setSelectedHackathon(null);
+        }} 
       />
     </>
   );
 }
 
 function HackathonCard({ hackathon, index, onClick }: { hackathon: any, index: number, onClick: () => void }) {
-  const isWinner = hackathon.achievement.toLowerCase().includes('1st');
+  const isWinner = isWinnerAchievement(hackathon.achievement);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
+      transition={{ duration: HACKATHON_CONFIG.ANIMATION_DURATION, delay: index * HACKATHON_CONFIG.ANIMATION_DELAY }}
       onClick={onClick}
       className="cursor-pointer"
     >
@@ -75,11 +199,11 @@ function HackathonCard({ hackathon, index, onClick }: { hackathon: any, index: n
           <img 
             src={hackathon.image} 
             alt={hackathon.name}
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.05]"
             onError={(e) => {
+              logger.logImageError(hackathon.name, hackathon.image);
               e.currentTarget.style.display = 'none';
               e.currentTarget.parentElement!.classList.add('bg-black');
-              // Create a canvas placeholder effect with CSS
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/40 to-[#0d0d0d]" />
@@ -103,7 +227,7 @@ function HackathonCard({ hackathon, index, onClick }: { hackathon: any, index: n
         {/* Body */}
         <div className="p-6 md:p-8 flex flex-col flex-1 bg-[#0d0d0d] border border-t-0 border-[#1a1a1a] rounded-b-2xl relative z-10">
           <div className="flex justify-between items-center mb-6 border-b border-white/5 pb-4">
-            <div className="font-mono text-xs text-muted">{hackathon.date} • {hackathon.location}</div>
+            <div className="font-mono text-xs text-muted">{formatHackathonMeta(hackathon.date, hackathon.location)}</div>
             <div className="font-mono text-xs text-blue flex items-center gap-1">
               <span className="text-lg">👥</span> {hackathon.teamSize} members
             </div>
