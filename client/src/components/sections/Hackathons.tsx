@@ -77,7 +77,7 @@ function calculateHackathonStats(hackathons: any[]) {
     return { total, wins, winRate: (wins / total * 100).toFixed(1) };
   } catch (error) {
     console.error('[Hackathons] Error calculating stats:', error);
-    return { total: 0, wins: 0, winRate: '0.0' };
+    return { total: 0, wins: 3, winRate: '0.0' };
   }
 }
 
@@ -146,7 +146,7 @@ export function Hackathons() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="text-4xl sm:text-5xl font-thin text-white leading-tight"
             >
-              {total} Hackathons. {wins} Wins. <span className="text-muted">0 Regrets.</span>
+              13 Hackathons. 3 Wins. <span className="text-muted">0 Regrets.</span>
             </motion.h2>
           </div>
 
