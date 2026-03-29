@@ -6,17 +6,69 @@ import { GlowCard } from '../ui/GlowCard';
 import { Github, ExternalLink } from 'lucide-react';
 import { ProjectModal } from '../ui/ProjectModal';
 
+/**
+ * Project category constants
+ */
+const PROJECT_CATEGORIES = ['ALL', 'WEB', 'ML', 'TOOLS', 'SYSTEMS'] as const;
+
+/**
+ * Animation configurations for projects
+ */
+const PROJECT_ANIMATIONS = {
+  FEATURED_TRANSITION: { duration: 0.5 },
+  FEATURED_INITIAL: { opacity: 0, scale: 0.95 },
+  FEATURED_ANIMATE: { opacity: 1, scale: 1 },
+  FEATURED_EXIT: { opacity: 0, scale: 0.95 },
+  IMAGE_ZOOM: 1.05,
+} as const;
+
+/**
+ * Logger for project interactions
+ */
+const projectLogger = {
+  logCategoryFilter: (category: string) => {
+    console.debug(`[Projects] Filter applied: ${category}`);
+  },
+  logProjectSelect: (projectName: string, category: string) => {
+    console.debug(`[Projects] Project selected: ${projectName} (${category})`);
+  },
+  logImageLoadError: (projectName: string) => {
+    console.warn(`[Projects] Image failed to load: ${projectName}`);
+  },
+};
+
+/**
+ * Filter and organize projects by category
+ */
+function filterProjectsByCategory(projects: any[], category: string) {
+  return category === 'ALL' ? projects : projects.filter(p => p.category === category);
+}
+
+/**
+ * Separate projects into featured and regular
+ */
+function separateProjects(projects: any[]) {
+  return {
+    featured: projects.filter(p => p.featured),
+    others: projects.filter(p => !p.featured),
+  };
+}
+
 export function Projects() {
-  const [filter, setFilter] = useState('ALL');
+  const [filter, setFilter] = useState<typeof PROJECT_CATEGORIES[number]>('ALL');
   const [selectedProject, setSelectedProject] = useState<any>(null);
-  const filters = ['ALL', 'WEB', 'ML', 'TOOLS', 'SYSTEMS'];
 
-  const filteredProjects = portfolio.projects.filter(p =>
-    filter === 'ALL' || p.category === filter
-  );
+  const filteredProjects = filterProjectsByCategory(portfolio.projects, filter);
+  const { featured, others } = separateProjects(filteredProjects);
 
-  const featured = filteredProjects.filter(p => p.featured);
-  const others = filteredProjects.filter(p => !p.featured);
+  const handleFilterChange = (newFilter: typeof PROJECT_CATEGORIES[number]) => {
+    projectLogger.logCategoryFilter(newFilter);
+    setFilter(newFilter);
+  };
+
+  React.useEffect(() => {
+    console.debug('[Projects] Component mounted with total projects:', portfolio.projects.length);
+  }, []);
 
   return (
     <section id="projects" className="py-32 relative min-h-screen">
@@ -25,10 +77,10 @@ export function Projects() {
 
         {/* Filter Bar */}
         <div className="flex flex-wrap gap-6 mb-16 border-b border-white/5 pb-4">
-          {filters.map(f => (
+          {PROJECT_CATEGORIES.map(f => (
             <button
               key={f}
-              onClick={() => setFilter(f)}
+              onClick={() => handleFilterChange(f)}
               className={`font-mono text-xs tracking-widest uppercase pb-1 transition-colors relative ${filter === f ? 'text-green' : 'text-muted hover:text-white'
                 }`}
             >
@@ -50,12 +102,15 @@ export function Projects() {
               <motion.div
                 key={project.name}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
+                initial={PROJECT_ANIMATIONS.FEATURED_INITIAL}
+                animate={PROJECT_ANIMATIONS.FEATURED_ANIMATE}
+                exit={PROJECT_ANIMATIONS.FEATURED_EXIT}
+                transition={PROJECT_ANIMATIONS.FEATURED_TRANSITION}
                 className="cursor-pointer"
-                onClick={() => setSelectedProject(project)}
+                onClick={() => {
+                  projectLogger.logProjectSelect(project.name, project.category);
+                  setSelectedProject(project);
+                }}
               >
                 <GlowCard glowColor="blue" className="group overflow-hidden">
                   <div className="flex flex-col lg:flex-row min-h-[400px]">
@@ -63,8 +118,9 @@ export function Projects() {
                       <img
                         src={project.image}
                         alt={project.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-[${PROJECT_ANIMATIONS.IMAGE_ZOOM}]`}
                         onError={(e) => {
+                          projectLogger.logImageLoadError(project.name);
                           e.currentTarget.style.display = 'none';
                           e.currentTarget.parentElement!.classList.add('bg-[#111]', 'flex', 'items-center', 'justify-center');
                           e.currentTarget.parentElement!.innerHTML = `<span class="font-mono text-2xl text-dim">${project.name}</span>`;
