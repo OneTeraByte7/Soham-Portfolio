@@ -4,27 +4,81 @@ import { portfolio } from '../../data/portfolio';
 import { SectionLabel } from '../ui/SectionLabel';
 import { SkillBar } from '../ui/SkillBar';
 
-export function Skills() {
-  const categories = [
-    { title: 'Languages', data: portfolio.skills.languages },
-    { title: 'Frameworks', data: portfolio.skills.frameworks },
-    { title: 'Databases', data: portfolio.skills.databases },
-    { title: 'Tools', data: portfolio.skills.tools }
-  ];
+/**
+ * Skill category configuration
+ */
+const SKILL_CATEGORIES = [
+  { title: 'Languages', data: portfolio.skills.languages },
+  { title: 'Frameworks', data: portfolio.skills.frameworks },
+  { title: 'Databases', data: portfolio.skills.databases },
+  { title: 'Tools', data: portfolio.skills.tools }
+] as const;
 
-  // For the animated bars section we'll combine and sort by proficiency (top 8)
-  const allProficiencies = [
+/**
+ * Proficiency level color mapping
+ */
+const PROFICIENCY_COLORS = {
+  EXPERT: { color: 'bg-green shadow-[0_0_8px_#00ff88]', threshold: 90 },
+  ADVANCED: { color: 'bg-blue shadow-[0_0_8px_#00d4ff]', threshold: 80 },
+  INTERMEDIATE: { color: 'bg-orange shadow-[0_0_8px_#ff8c00]', threshold: 0 },
+} as const;
+
+/**
+ * Animation configuration for skills section
+ */
+const SKILL_ANIMATIONS = {
+  CATEGORY_DURATION: 0.6,
+  CATEGORY_DELAY: 0.1,
+  BAR_DURATION: 0.6,
+  BAR_DELAY: 0.1,
+  BAR_MARGIN: '-50px',
+} as const;
+
+/**
+ * Logger for skills interactions
+ */
+const skillsLogger = {
+  logComponentMount: (totalSkills: number) => {
+    console.debug(`[Skills] Component mounted with ${totalSkills} total skills`);
+  },
+  logCategoryView: (category: string, count: number) => {
+    console.debug(`[Skills] Viewing category: ${category} (${count} skills)`);
+  },
+};
+
+/**
+ * Get proficiency color based on skill level
+ */
+function getProficiencyDotColor(proficiency: number = 0): string {
+  if (proficiency >= PROFICIENCY_COLORS.EXPERT.threshold) {
+    return PROFICIENCY_COLORS.EXPERT.color;
+  }
+  if (proficiency >= PROFICIENCY_COLORS.ADVANCED.threshold) {
+    return PROFICIENCY_COLORS.ADVANCED.color;
+  }
+  return PROFICIENCY_COLORS.INTERMEDIATE.color;
+}
+
+/**
+ * Filter and sort skills by proficiency
+ */
+function getTopProficiencies(count: number = 8) {
+  return [
     ...portfolio.skills.languages,
     ...portfolio.skills.frameworks,
     ...portfolio.skills.databases.filter(d => d.proficiency),
     ...portfolio.skills.tools.filter(t => t.proficiency)
-  ].sort((a, b) => (b.proficiency || 0) - (a.proficiency || 0)).slice(0, 8);
+  ].sort((a, b) => (b.proficiency || 0) - (a.proficiency || 0)).slice(0, count);
+}
 
-  const getDotColor = (prof: number = 0) => {
-    if (prof >= 90) return 'bg-green shadow-[0_0_8px_#00ff88]';
-    if (prof >= 80) return 'bg-blue shadow-[0_0_8px_#00d4ff]';
-    return 'bg-orange shadow-[0_0_8px_#ff8c00]';
-  };
+export function Skills() {
+  React.useEffect(() => {
+    const totalSkills = SKILL_CATEGORIES.reduce((sum, cat) => sum + cat.data.length, 0);
+    skillsLogger.logComponentMount(totalSkills);
+  }, []);
+
+  // For the animated bars section we'll combine and sort by proficiency (top 8)
+  const allProficiencies = getTopProficiencies(8);
 
   return (
     <section id="skills" className="py-32 relative min-h-screen">
@@ -33,13 +87,14 @@ export function Skills() {
 
         {/* Part 1: Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 mb-32">
-          {categories.map((category, i) => (
+          {SKILL_CATEGORIES.map((category, i) => (
             <motion.div 
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true, margin: SKILL_ANIMATIONS.BAR_MARGIN }}
+              transition={{ duration: SKILL_ANIMATIONS.CATEGORY_DURATION, delay: i * SKILL_ANIMATIONS.CATEGORY_DELAY }}
+              onViewportEnter={() => skillsLogger.logCategoryView(category.title, category.data.length)}
             >
               <h3 className="font-mono text-xs tracking-widest text-orange uppercase mb-6 border-b border-orange/20 pb-3">
                 {category.title}
@@ -59,7 +114,7 @@ export function Skills() {
                       </span>
                     </div>
                     {skill.proficiency && (
-                      <div className={`w-1.5 h-1.5 rounded-full ${getDotColor(skill.proficiency)} transition-transform duration-300 group-hover:scale-150`} />
+                      <div className={`w-1.5 h-1.5 rounded-full ${getProficiencyDotColor(skill.proficiency)} transition-transform duration-300 group-hover:scale-150`} />
                     )}
                   </div>
                 ))}
