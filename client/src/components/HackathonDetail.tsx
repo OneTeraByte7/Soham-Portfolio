@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Trophy, Calendar, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Trophy, Calendar, CheckCircle, ExternalLink } from 'lucide-react';
 import { hackathons } from '../data/hackathons';
 import QuantumField from './QuantumField';
 import GlassCard from './GlassCard';
@@ -105,6 +105,21 @@ export default function HackathonDetail() {
 
                  <h4 className="text-xs font-bold uppercase tracking-widest text-vivid-orange mb-2">Major Achievement</h4>
                  <p className="text-white font-medium text-lg mb-6">{hackathon.achievement}</p>
+
+                 {hackathon.links?.demo && (
+                   <>
+                     <h4 className="text-xs font-bold uppercase tracking-widest text-vivid-orange mb-2">Live Demo</h4>
+                     <a
+                       href={hackathon.links.demo}
+                       target="_blank"
+                       rel="noreferrer"
+                       className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-vivid-orange text-black font-semibold transition-transform hover:scale-[1.02] mb-6"
+                     >
+                       <ExternalLink className="w-4 h-4" />
+                       Open project
+                     </a>
+                   </>
+                 )}
                  
                  {hackathon.tags && hackathon.tags.length > 0 && (
                    <>
