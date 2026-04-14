@@ -43,6 +43,10 @@ export interface PortfolioData {
     image: string;
     teamSize: number;
     builtWith: string[];
+    links?: {
+      demo?: string;
+      github?: string;
+    };
   }[];
   skills: {
     languages: { name: string; icon: string; proficiency: number }[];
@@ -203,14 +207,17 @@ export const portfolio: PortfolioData = {
       builtWith: ["Machine Learning", "Python", "AI"],
     },
     {
-      name: "NST & Blinkit Hackathon Teckron",
+      name: "NST x Blinkit Hackathon - Teckron 2025",
       achievement: "Top 16 Finalist",
       date: "March 2025",
       location: "India",
-      description: "Developed a waste management automation web app for dark stores, utilizing AI to optimize waste segregation, enhancing efficiency by 60%.",
+      description: "Built an AI-powered waste classification platform for dark stores and micro-fulfillment centers that automates waste segregation, tracks store-wise performance, and supports real-time operational decisions.",
       image: "/images/nst/certificate.png",
       teamSize: 4,
       builtWith: ["AI", "Machine Learning", "Web App"],
+      links: {
+        demo: "https://hackron2025-roan.vercel.app/"
+      },
     },
     {
       name: "RIFT 2026 Hackathon",

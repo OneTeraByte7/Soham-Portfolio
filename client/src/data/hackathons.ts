@@ -41,18 +41,28 @@ export const hackathons: Hackathon[] = [
   },
   {
     id: 'nst-blinkit-teckron-2025',
-    name: 'NST & Blinkit Hackathon Teckron',
+    name: 'NST x Blinkit Hackathon - Teckron 2025',
     position: 'Top 16 Finalist',
     date: 'March 2025',
-    description: 'Developed a waste management automation web app for dark stores. Utilized Machine Learning & AI to optimize waste segregation, enhancing efficiency by 60%. Built a scalable website infrastructure that processed 10,000+ data points for real-time waste categorization.',
-    project: 'Smart Automation and Technology',
+    description: 'Built an AI-powered waste classification platform for dark stores and micro-fulfillment centers that automates waste segregation, tracks store-wise performance, and supports real-time operational decisions. The system combines rule-based shelf-life classification, machine learning insights, and dashboard-driven analytics to reduce food wastage and improve efficiency.',
+    project: 'AI-Powered Waste Classification & Operations',
     achievement: 'Top 16 among 150+ teams',
     icon: '/images/nst/certificate.png',
     color: 'cyber-green',
+    tags: ['React', 'Tailwind CSS', 'Machine Learning', 'Node.js', 'Express', 'MongoDB', 'Real-time Dashboards'],
+    highlights: [
+      'Reduced waste handling friction with automated shelf-life classification',
+      'Designed store-wise dashboards for tracking waste trends and decisions',
+      'Combined AI insights with rule-based logic for clearance recommendations',
+      'Built for dark stores and micro-fulfillment workflows'
+    ],
     showCertificate: true,
     gallery: [
       '/images/nst/certificate.png'
-    ]
+    ],
+    links: {
+      demo: 'https://hackron2025-roan.vercel.app/'
+    }
   },
   {
     id: 'rift-2026',
