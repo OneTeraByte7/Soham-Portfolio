@@ -4,7 +4,7 @@ import { portfolio } from '../../data/portfolio';
 import { hackathons as detailedHackathons } from '../../data/hackathons';
 import { SectionLabel } from '../ui/SectionLabel';
 import { GlowCard } from '../ui/GlowCard';
-import { X, Calendar, Trophy, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, Calendar, Trophy, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 
 /**
  * Utility function to determine if a hackathon is a winning achievement
@@ -117,6 +117,10 @@ interface HackathonData {
   gallery?: string[];
   highlights?: string[];
   tags?: string[];
+  links?: {
+    demo?: string;
+    github?: string;
+  };
 }
 
 export function Hackathons() {
@@ -357,6 +361,21 @@ function HackathonModal({ hackathon, onClose }: { hackathon: any, onClose: () =>
               </div>
             )}
 
+            {hackathon.links?.demo && (
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Live Project</h3>
+                <a
+                  href={hackathon.links.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-orange text-black font-semibold hover:scale-[1.02] transition-transform"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Open live demo
+                </a>
+              </div>
+            )}
+
             {/* Gallery */}
             {images.length > 0 && (
               <div>
@@ -401,6 +420,21 @@ function HackathonModal({ hackathon, onClose }: { hackathon: any, onClose: () =>
                     </>
                   )}
                 </div>
+              </div>
+            )}
+
+            {hackathon.links?.demo && (
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3">Live Project</h3>
+                <a
+                  href={hackathon.links.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-orange text-black font-semibold hover:scale-[1.02] transition-transform"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Open live demo
+                </a>
               </div>
             )}
           </div>
